@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>COMP2068 CreateJS BoilerPlate</title>
+    <!-- CSS Section -->
+    <link href="css/game.css" rel="stylesheet" />
+</head>
+<body onload="preload()">
+    <!-- Canvas where the Game will Happen-->
+    <canvas id="canvas" width="640" height="480"></canvas>
+
+    <!-- JavaScript -->
+
+
+    <script src="Scripts/lib/easeljs-0.8.0.min.js"></script>
+    <script src="Scripts/lib/tweenjs-0.6.0.min.js"></script>
+    <script src="Scripts/lib/soundjs-0.6.0.min.js"></script>
+    <script src="Scripts/lib/preloadjs-0.6.0.min.js"></script>
+    <script src="Scripts/lib/Stats.js"></script>
+
+    <!-- Game Scripts -->
+    <script src="Scripts/constants.js"></script>
+    <script src="Scripts/objects/gameobject.js"></script>
+
+    <script src="Scripts/objects/samus.js"></script>
+    <script src="Scripts/objects/ball.js"></script>
+    <script src="Scripts/objects/laser.js"></script>
+    <script src="Scripts/objects/enemy.js"></script>
+    <script src="Scripts/objects/hallway.js"></script>
+
+    <script src="Scripts/objects/label.js"></script>
+    <script src="Scripts/objects/button.js"></script>
+    <script src="Scripts/objects/scoreboard.js"></script>
+
+    <script src="Scripts/states/gameover.js"></script>
+    <script src="Scripts/states/play.js"></script>
+    <script src="Scripts/states/menu.js"></script>
+    <script src="Scripts/states/howto.js"></script>
+
+    <script src="Scripts/game.js"></script>
+</body>
+</html>

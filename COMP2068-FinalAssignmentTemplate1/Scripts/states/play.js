@@ -46,44 +46,51 @@ var states;
         Play.prototype.distance = function (p1, p2) {
             return Math.floor(Math.sqrt(Math.pow((p2.x - p1.x), 2) + Math.pow((p2.y - p1.y), 2)));
         }; //method distance ends
-        //Check Collision Method
-        Play.prototype.checkCollision = function (collider) {
+        // CHeck Collision Method
+        Play.prototype.checkCollision = function (collider1, hit1, collider2, hit2) {
             var p1 = new createjs.Point();
             var p2 = new createjs.Point();
-            p1.x = this.plane.x;
-            p1.y = this.plane.y;
-            p2.x = collider.x;
-            p2.y = collider.y;
+            p1.x = collider1.x;
+            p1.y = collider1.y;
+            p2.x = collider2.x;
+            p2.y = collider2.y;
             // Check for Collision
-            if (this.distance(p2, p1) < ((this.plane.height * 0.5) + (collider.height * 0.5))) {
-                if (!collider.isColliding) {
-                    createjs.Sound.play(collider.soundString);
-                    collider.isColliding = true;
-                    switch (collider.name) {
+            if (this.distance(p2, p1) < ((collider1.height * 0.5) + (collider2.height * 0.5))) {
+                if (!collider2.isColliding && !collider1.isColliding) {
+                    createjs.Sound.play(collider2.soundString);
+                    collider1.isColliding = true;
+                    collider2.isColliding = true;
+                    switch (collider2.name) {
                         case "island":
                             this.scoreboard.score += 100;
                             break;
-                        case "cloud":
+                        case "enemy":
                             this.scoreboard.lives--;
                             break;
                     }
-                } //if ends
+                    if (hit1) {
+                        collider1.collide();
+                    }
+                    if (hit2) {
+                        collider2.collide();
+                    }
+                }
             }
             else {
-                collider.isColliding = false;
-            } //else ends
-        }; //method checkCollision ends
+                collider1.isColliding = false;
+                collider2.isColliding = false;
+            }
+        };
         //Update Method
         Play.prototype.update = function () {
             this.ocean.update();
             this.plane.update();
             this.island.update();
+            //COMMENTED OUT COLLIDION CHECKING
             if (this.scoreboard.lives > 0) {
                 for (var cloud = constants.CLOUD_NUM; cloud > 0; cloud--) {
                     this.clouds[cloud].update();
-                    this.checkCollision(this.clouds[cloud]);
                 }
-                this.checkCollision(this.island);
             } //if ends
             this.scoreboard.update();
             if (this.scoreboard.lives < 1) {

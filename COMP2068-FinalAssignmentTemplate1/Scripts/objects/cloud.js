@@ -35,6 +35,8 @@ var objects;
             this.x += this._dx;
             this._checkBounds();
         };
+        Cloud.prototype.collide = function () {
+        };
         return Cloud;
     })(objects.GameObject);
     objects.Cloud = Cloud;

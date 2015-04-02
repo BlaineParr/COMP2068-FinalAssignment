@@ -20,7 +20,7 @@
 
         // PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++++
 
-        public hit() {
+        public collide() {
             
 
 

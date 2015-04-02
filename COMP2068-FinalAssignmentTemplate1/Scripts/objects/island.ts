@@ -36,6 +36,8 @@
 
             this._checkBounds();
         }
+        public collide() {
+        }
 
         
     }

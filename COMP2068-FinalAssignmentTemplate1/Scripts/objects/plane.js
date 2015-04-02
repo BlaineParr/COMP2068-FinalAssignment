@@ -16,25 +16,45 @@ var objects;
             this.height = this.getBounds().height;
             this.regX = this.width * 0.5;
             this.regY = this.height * 0.5;
+            this._currentDirection = constants.DOWN;
             this.y = 430;
             createjs.Sound.play("engine", { loop: -1 });
         } //constructor ends
+        //Private Methods/////////////////////////////////////////////////////////////////////////
+        Plane.prototype.shoot = function () {
+            switch (this._currentDirection) {
+                case constants.UP:
+                    break;
+                case constants.DOWN:
+                    break;
+                case constants.LEFT:
+                    break;
+                case constants.RIGHT:
+            }
+        }; //method shoot ends
         //Public Methods//////////////////////////////////////////////////////////////////////////
         Plane.prototype.update = function () {
             if (this._movingUp) {
                 this.y -= 5;
+                this._currentDirection = constants.UP;
             } //if ends
             if (this._movingDown) {
                 this.y += 5;
+                this._currentDirection = constants.DOWN;
             } //else if ends
             if (this._movingLeft) {
                 this.x -= 5;
+                this._currentDirection = constants.LEFT;
             } //else if ends
             if (this._movingRight) {
                 this.x += 5;
+                this._currentDirection = constants.RIGHT;
             } //else if ends
         }; //method update ends
         Plane.prototype.actionStart = function (key) {
+            if (key == 32) {
+                this.shoot();
+            } //if ends
             if (key == 87) {
                 this._movingUp = true;
             } //if ends

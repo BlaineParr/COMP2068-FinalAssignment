@@ -6,6 +6,7 @@
         private _movingDown: boolean;
         private _movingLeft: boolean;
         private _movingRight: boolean;
+        private _currentDirection: number;
         public width: number;
         public height: number;
         public name: string;
@@ -22,28 +23,50 @@
             this.regX = this.width * 0.5;
             this.regY = this.height * 0.5;
 
+            this._currentDirection = constants.DOWN;
+
             this.y = 430;
 
             createjs.Sound.play("engine", { loop: -1 });
         } //constructor ends
 
+        //Private Methods/////////////////////////////////////////////////////////////////////////
+        public shoot(): void {
+            switch (this._currentDirection) {
+                case constants.UP:
+                    break;
+                case constants.DOWN:
+                    break;
+                case constants.LEFT:
+                    break;
+                case constants.RIGHT:
+            } //switch ends
+        } //method shoot ends
+
         //Public Methods//////////////////////////////////////////////////////////////////////////
         public update(): void {
             if (this._movingUp) {
                 this.y -= 5;
+                this._currentDirection = constants.UP;
             } //if ends
             if (this._movingDown) {
                 this.y += 5;
+                this._currentDirection = constants.DOWN;
             } //else if ends
             if (this._movingLeft) {
                 this.x -= 5;
+                this._currentDirection = constants.LEFT;
             } //else if ends
             if (this._movingRight) {
                 this.x += 5;
+                this._currentDirection = constants.RIGHT;
             } //else if ends
         } //method update ends
 
         public actionStart(key): void {
+            if (key == 32) {
+                this.shoot();
+            } //if ends
             if (key == 87) {
                 this._movingUp = true;
             } //if ends

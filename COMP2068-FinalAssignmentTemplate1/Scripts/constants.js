@@ -17,5 +17,10 @@ var constants;
     constants.MENU_STATE = 0;
     constants.PLAY_STATE = 1;
     constants.GAME_OVER_STATE = 2;
-})(constants || (constants = {}));
+    //Direction Constants
+    constants.UP = 0;
+    constants.DOWN = 1;
+    constants.LEFT = 2;
+    constants.RIGHT = 3;
+})(constants || (constants = {})); //module constants ends
 //# sourceMappingURL=constants.js.map

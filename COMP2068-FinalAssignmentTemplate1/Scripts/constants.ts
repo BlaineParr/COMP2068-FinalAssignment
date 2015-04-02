@@ -19,4 +19,10 @@
     export var MENU_STATE: number = 0;
     export var PLAY_STATE: number = 1;
     export var GAME_OVER_STATE: number = 2;
-} 
+
+    //Direction Constants
+    export var UP: number = 0;
+    export var DOWN: number = 1;
+    export var LEFT: number = 2;
+    export var RIGHT: number = 3;
+} //module constants ends

@@ -61,6 +61,7 @@
   <ItemGroup>
     <Content Include="assets\images\1945.bmp" />
     <Content Include="assets\images\cloud.png" />
+    <Content Include="assets\images\gameTemplate.png" />
     <Content Include="assets\images\island.png" />
     <Content Include="assets\images\ocean.gif" />
     <Content Include="assets\images\plane.png" />
@@ -132,6 +133,7 @@
     <TypeScriptCompile Include="Scripts\objects\label.ts" />
     <TypeScriptCompile Include="Scripts\objects\ocean.ts" />
     <TypeScriptCompile Include="Scripts\objects\plane.ts" />
+    <TypeScriptCompile Include="Scripts\objects\pongBall.ts" />
     <TypeScriptCompile Include="Scripts\objects\scoreboard.ts" />
     <TypeScriptCompile Include="Scripts\states\gameover.ts" />
     <TypeScriptCompile Include="Scripts\states\menu.ts" />

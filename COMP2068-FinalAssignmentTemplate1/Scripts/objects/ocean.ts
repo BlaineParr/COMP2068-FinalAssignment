@@ -1,16 +1,16 @@
 ﻿module objects {
 
-    export class Hallway extends createjs.Bitmap {
+    export class Ocean extends createjs.Bitmap {
         // PUBLIC VARIABLES
         public width;
         public height;
 
         // PRIVATE VARIABLE
-        private _dx = -5;
+        private _dy = 5;
 
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++
         constructor() {
-            super(assetLoader.getResult("hallway"));
+            super(assetLoader.getResult("ocean"));
 
             this.width = this.getBounds().width;
             this.height = this.getBounds().height;
@@ -22,12 +22,12 @@
         // PRIVATE METHODS ++++++++++++++++++++++++++++++++++++++++
         private _reset() {
             // set the island to start at a random x value
-            this.x = constants.OCEAN_RESET_WIDTH;
-            this.y =0;
+            this.x = 0;
+            this.y = -constants.OCEAN_RESET_HEIGHT;
         }
 
         private _checkBounds() {
-            if (this.x <= -125) {
+            if (this.y >= 0) {
                 this._reset();
             }
         }
@@ -36,7 +36,7 @@
         // PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++++
 
         public update() {
-            this.x += this._dx;
+            this.y += this._dy;
 
             this._checkBounds();
         }

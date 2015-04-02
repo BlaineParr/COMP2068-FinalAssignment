@@ -1,4 +1,4 @@
-﻿/// <reference path="../constants.ts" />
+/// <reference path="../constants.ts" />
 /// <reference path="../objects/gameobject.ts" />
 /// <reference path="../objects/cloud.ts" />
 /// <reference path="../objects/island.ts" />
@@ -7,71 +7,47 @@
 /// <reference path="../objects/button.ts" />
 /// <reference path="../objects/label.ts" />
 /// <reference path="../objects/scoreboard.ts" />
-
-
-module states {
+var states;
+(function (states) {
     // PLAY STATE
-    export class Play {
-        // INSTANCE VARIABLES ++++++++++++++++++++++++++++++++++++++++++++++
-        public game: createjs.Container;
-        public plane: objects.Plane;
-        public island: objects.Island;
-        public clouds: objects.Cloud[] = [];
-        public ocean: objects.Ocean;
-        public scoreboard: objects.ScoreBoard;
-
+    var Play = (function () {
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        constructor() {
+        function Play() {
+            this.clouds = [];
             // Instantiate Game Container
             this.game = new createjs.Container();
-
             // Add ocean to game
             this.ocean = new objects.Ocean();
             this.game.addChild(this.ocean);
-
-
             // Add island to game
             this.island = new objects.Island();
             this.game.addChild(this.island);
-
-
             // Add plane to game
             this.plane = new objects.Plane();
             this.game.addChild(this.plane);
-
-            // Add clouds to game
             for (var cloud = constants.CLOUD_NUM; cloud > 0; cloud--) {
                 this.clouds[cloud] = new objects.Cloud();
                 this.game.addChild(this.clouds[cloud]);
             }
-
             this.scoreboard = new objects.ScoreBoard(this.game);
-
-
-
             stage.addChild(this.game);
         } // constructor end
-
-
         // PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++++++++++++++
-
         // Calculate the distance between two points
-        distance(p1: createjs.Point, p2: createjs.Point): number {
-
+        Play.prototype.distance = function (p1, p2) {
             return Math.floor(Math.sqrt(Math.pow((p2.x - p1.x), 2) + Math.pow((p2.y - p1.y), 2)));
-        } // distance end
-
+        }; // distance end
         // CHeck Collision Method
-        checkCollision(collider: objects.GameObject) {
-            var p1: createjs.Point = new createjs.Point();
-            var p2: createjs.Point = new createjs.Point();
+        Play.prototype.checkCollision = function (collider) {
+            var p1 = new createjs.Point();
+            var p2 = new createjs.Point();
             p1.x = this.plane.x;
             p1.y = this.plane.y;
             p2.x = collider.x;
             p2.y = collider.y;
             // Check for Collision
             if (this.distance(p2, p1) < ((this.plane.height * 0.5) + (collider.height * 0.5))) {
-                if (!collider.isColliding) { // Collision has occurred
+                if (!collider.isColliding) {
                     createjs.Sound.play(collider.soundString);
                     collider.isColliding = true;
                     switch (collider.name) {
@@ -83,29 +59,24 @@ module states {
                             break;
                     }
                 }
-            } else {
+            }
+            else {
                 collider.isColliding = false;
             }
-    } // checkCollision end
-
+        }; // checkCollision end
         // UPDATE METHOD
-        public update() {
-
+        Play.prototype.update = function () {
             this.ocean.update();
             this.plane.update();
             this.island.update();
-
             if (this.scoreboard.lives > 0) {
                 for (var cloud = constants.CLOUD_NUM; cloud > 0; cloud--) {
                     this.clouds[cloud].update();
                     this.checkCollision(this.clouds[cloud]);
                 }
-
                 this.checkCollision(this.island);
             }
-
             this.scoreboard.update();
-
             if (this.scoreboard.lives < 1) {
                 createjs.Sound.stop();
                 this.game.removeAllChildren();
@@ -117,8 +88,9 @@ module states {
                 currentState = constants.GAME_OVER_STATE;
                 stateChanged = true;
             }
-        } // update method end
-
-
-    }
-} 
+        }; // update method end
+        return Play;
+    })();
+    states.Play = Play;
+})(states || (states = {}));
+//# sourceMappingURL=play.js.map

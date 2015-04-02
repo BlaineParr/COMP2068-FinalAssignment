@@ -24,10 +24,7 @@
 
             this.isColliding = false;
         }
-        //public methods++++++++++++++++++++++++++++++++++++++++++++
-        //create an empty hit mehtod that is overridden in the subclass of the gameobject
-        public hit() {
-    }
+
 
     }
 

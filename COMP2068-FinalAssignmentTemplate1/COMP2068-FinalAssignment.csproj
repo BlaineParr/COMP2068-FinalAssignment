@@ -59,7 +59,34 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\images\1945.bmp" />
+    <Content Include="assets\images\cloud.png" />
+    <Content Include="assets\images\island.png" />
+    <Content Include="assets\images\ocean.gif" />
+    <Content Include="assets\images\plane.png" />
+    <Content Include="assets\images\playButton.png" />
+    <Content Include="assets\images\sideplane.gif" />
+    <Content Include="assets\images\tryAgainButton.png" />
+    <Content Include="css\game.css" />
+    <Content Include="index.html" />
     <Content Include="packages.config" />
+    <Content Include="assets\audio\engine.ogg" />
+    <Content Include="assets\audio\thunder.ogg" />
+    <Content Include="assets\audio\yay.ogg" />
+    <Content Include="assets\images\Thumbs.db" />
+    <Content Include="Scripts\constants.js.map" />
+    <Content Include="Scripts\game.js.map" />
+    <Content Include="Scripts\objects\button.js.map" />
+    <Content Include="Scripts\objects\cloud.js.map" />
+    <Content Include="Scripts\objects\gameobject.js.map" />
+    <Content Include="Scripts\objects\island.js.map" />
+    <Content Include="Scripts\objects\label.js.map" />
+    <Content Include="Scripts\objects\ocean.js.map" />
+    <Content Include="Scripts\objects\plane.js.map" />
+    <Content Include="Scripts\objects\scoreboard.js.map" />
+    <Content Include="Scripts\states\gameover.js.map" />
+    <Content Include="Scripts\states\menu.js.map" />
+    <Content Include="Scripts\states\play.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -68,13 +95,24 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="css\game.css" />
-    <Content Include="index.html" />
+    <Content Include="Scripts\constants.js" />
+    <Content Include="Scripts\game.js" />
     <Content Include="Scripts\lib\easeljs-0.8.0.min.js" />
     <Content Include="Scripts\lib\preloadjs-0.6.0.min.js" />
     <Content Include="Scripts\lib\soundjs-0.6.0.min.js" />
     <Content Include="Scripts\lib\Stats.js" />
     <Content Include="Scripts\lib\tweenjs-0.6.0.min.js" />
+    <Content Include="Scripts\objects\button.js" />
+    <Content Include="Scripts\objects\cloud.js" />
+    <Content Include="Scripts\objects\gameobject.js" />
+    <Content Include="Scripts\objects\island.js" />
+    <Content Include="Scripts\objects\label.js" />
+    <Content Include="Scripts\objects\ocean.js" />
+    <Content Include="Scripts\objects\plane.js" />
+    <Content Include="Scripts\objects\scoreboard.js" />
+    <Content Include="Scripts\states\gameover.js" />
+    <Content Include="Scripts\states\menu.js" />
+    <Content Include="Scripts\states\play.js" />
     <None Include="Scripts\_references.js" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -82,17 +120,20 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="assets\fonts\" />
+  </ItemGroup>
+  <ItemGroup>
     <TypeScriptCompile Include="Scripts\constants.ts" />
     <TypeScriptCompile Include="Scripts\game.ts" />
-    <TypeScriptCompile Include="Scripts\objects\enemy.ts" />
+    <TypeScriptCompile Include="Scripts\objects\button.ts" />
+    <TypeScriptCompile Include="Scripts\objects\cloud.ts" />
     <TypeScriptCompile Include="Scripts\objects\gameobject.ts" />
+    <TypeScriptCompile Include="Scripts\objects\island.ts" />
     <TypeScriptCompile Include="Scripts\objects\label.ts" />
-    <TypeScriptCompile Include="Scripts\objects\hallway.ts" />
-    <TypeScriptCompile Include="Scripts\objects\laser.ts" />
-    <TypeScriptCompile Include="Scripts\objects\samus.ts" />
+    <TypeScriptCompile Include="Scripts\objects\ocean.ts" />
+    <TypeScriptCompile Include="Scripts\objects\plane.ts" />
     <TypeScriptCompile Include="Scripts\objects\scoreboard.ts" />
     <TypeScriptCompile Include="Scripts\states\gameover.ts" />
-    <TypeScriptCompile Include="Scripts\states\howto.ts" />
     <TypeScriptCompile Include="Scripts\states\menu.ts" />
     <TypeScriptCompile Include="Scripts\states\play.ts" />
     <TypeScriptCompile Include="Scripts\typings\createjs-lib\createjs-lib.d.ts" />
@@ -104,11 +145,6 @@
     <TypeScriptCompile Include="Scripts\typings\webaudioapi\waa.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\webrtc\MediaStream.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\webrtc\RTCPeerConnection.d.ts" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="assets\audio\" />
-    <Folder Include="assets\fonts\" />
-    <Folder Include="assets\images\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -12,26 +12,13 @@ var objects;
         function Ocean() {
             _super.call(this, assetLoader.getResult("ocean"));
             // PRIVATE VARIABLE
-            this._dy = 5;
+            this._dy = 0;
             this.width = this.getBounds().width;
             this.height = this.getBounds().height;
-            this._reset();
         }
         // PRIVATE METHODS ++++++++++++++++++++++++++++++++++++++++
-        Ocean.prototype._reset = function () {
-            // set the island to start at a random x value
-            this.x = 0;
-            this.y = -constants.OCEAN_RESET_HEIGHT;
-        };
-        Ocean.prototype._checkBounds = function () {
-            if (this.y >= 0) {
-                this._reset();
-            }
-        };
         // PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++++
         Ocean.prototype.update = function () {
-            this.y += this._dy;
-            this._checkBounds();
         };
         return Ocean;
     })(createjs.Bitmap);

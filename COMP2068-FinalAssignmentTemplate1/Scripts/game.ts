@@ -11,6 +11,7 @@
 /// <reference path="objects/island.ts" />
 /// <reference path="objects/cloud.ts" />
 /// <reference path="objects/ocean.ts" />
+/// <reference path="objects/pongball.ts" />
 
 /// <reference path="objects/label.ts" />
 /// <reference path="objects/button.ts" />
@@ -48,6 +49,7 @@ var menu: states.Menu;
 // asset manifest - array of asset objects
 var manifest = [
     { id: "cloud", src: "assets/images/cloud.png" },
+    { id: "pongBall", src: "assets/images/cloud.png" },
     { id: "island", src: "assets/images/island.png" },
     { id: "ocean", src: "assets/images/ocean.gif" },
     { id: "plane", src: "assets/images/plane.png" },

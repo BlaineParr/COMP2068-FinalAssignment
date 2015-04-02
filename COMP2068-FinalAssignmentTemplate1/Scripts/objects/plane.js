@@ -9,8 +9,10 @@ var objects;
     var Plane = (function (_super) {
         __extends(Plane, _super);
         //Constructor/////////////////////////////////////////////////////////////////////////////
-        function Plane() {
+        function Plane(container) {
             _super.call(this, assetLoader.getResult("plane"));
+            this.pongBalls = [];
+            this._container = container;
             this.name = "plane";
             this.width = this.getBounds().width;
             this.height = this.getBounds().height;
@@ -18,54 +20,49 @@ var objects;
             this.regY = this.height * 0.5;
             this._currentDirection = constants.DOWN;
             this.y = 430;
+            this.numberOfPongBalls = 0;
             createjs.Sound.play("engine", { loop: -1 });
         } //constructor ends
         //Private Methods/////////////////////////////////////////////////////////////////////////
-        Plane.prototype.shoot = function () {
-            switch (this._currentDirection) {
-                case constants.UP:
-                    break;
-                case constants.DOWN:
-                    break;
-                case constants.LEFT:
-                    break;
-                case constants.RIGHT:
-            }
+        Plane.prototype._shoot = function () {
+            this.pongBalls[this.numberOfPongBalls] = new objects.PongBall(this.x, this.y, this._currentDirection);
+            this.numberOfPongBalls++;
+            this._container.addChild(this.pongBalls[this.numberOfPongBalls]);
         }; //method shoot ends
         //Public Methods//////////////////////////////////////////////////////////////////////////
         Plane.prototype.update = function () {
             if (this._movingUp) {
                 this.y -= 5;
-                this._currentDirection = constants.UP;
             } //if ends
             if (this._movingDown) {
                 this.y += 5;
-                this._currentDirection = constants.DOWN;
             } //else if ends
             if (this._movingLeft) {
                 this.x -= 5;
-                this._currentDirection = constants.LEFT;
             } //else if ends
             if (this._movingRight) {
                 this.x += 5;
-                this._currentDirection = constants.RIGHT;
             } //else if ends
         }; //method update ends
         Plane.prototype.actionStart = function (key) {
             if (key == 32) {
-                this.shoot();
+                this._shoot();
             } //if ends
             if (key == 87) {
                 this._movingUp = true;
+                this._currentDirection = constants.UP;
             } //if ends
             if (key == 83) {
                 this._movingDown = true;
+                this._currentDirection = constants.DOWN;
             } //if ends
             if (key == 65) {
                 this._movingLeft = true;
+                this._currentDirection = constants.LEFT;
             } //if ends
             if (key == 68) {
                 this._movingRight = true;
+                this._currentDirection = constants.RIGHT;
             } //if ends
         }; //method actionStart ends
         Plane.prototype.actionEnd = function (key) {

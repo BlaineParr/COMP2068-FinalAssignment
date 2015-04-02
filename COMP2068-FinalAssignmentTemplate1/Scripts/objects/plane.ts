@@ -2,6 +2,7 @@
 
     export class Plane extends createjs.Bitmap {
         //instance variables
+        private _container: createjs.Container;
         private _movingUp: boolean;
         private _movingDown: boolean;
         private _movingLeft: boolean;
@@ -10,10 +11,14 @@
         public width: number;
         public height: number;
         public name: string;
+        public pongBalls: objects.PongBall[] = [];
+        public numberOfPongBalls: number;
 
         //Constructor/////////////////////////////////////////////////////////////////////////////
-        constructor() {
+        constructor(container: createjs.Container) {
             super(assetLoader.getResult("plane"));
+
+            this._container = container;
 
             this.name = "plane";
 
@@ -27,57 +32,53 @@
 
             this.y = 430;
 
+            this.numberOfPongBalls = 0;
+
             createjs.Sound.play("engine", { loop: -1 });
         } //constructor ends
 
         //Private Methods/////////////////////////////////////////////////////////////////////////
-        public shoot(): void {
-            switch (this._currentDirection) {
-                case constants.UP:
-                    break;
-                case constants.DOWN:
-                    break;
-                case constants.LEFT:
-                    break;
-                case constants.RIGHT:
-            } //switch ends
+        public _shoot(): void {
+            this.pongBalls[this.numberOfPongBalls] = new objects.PongBall(this.x, this.y, this._currentDirection);
+            this.numberOfPongBalls++;
+            this._container.addChild(this.pongBalls[this.numberOfPongBalls]);
         } //method shoot ends
 
         //Public Methods//////////////////////////////////////////////////////////////////////////
         public update(): void {
             if (this._movingUp) {
                 this.y -= 5;
-                this._currentDirection = constants.UP;
             } //if ends
             if (this._movingDown) {
                 this.y += 5;
-                this._currentDirection = constants.DOWN;
             } //else if ends
             if (this._movingLeft) {
                 this.x -= 5;
-                this._currentDirection = constants.LEFT;
             } //else if ends
             if (this._movingRight) {
                 this.x += 5;
-                this._currentDirection = constants.RIGHT;
             } //else if ends
         } //method update ends
 
         public actionStart(key): void {
             if (key == 32) {
-                this.shoot();
+                this._shoot();
             } //if ends
             if (key == 87) {
                 this._movingUp = true;
+                this._currentDirection = constants.UP;
             } //if ends
             if (key == 83) {
                 this._movingDown = true;
+                this._currentDirection = constants.DOWN;
             } //if ends
             if (key == 65) {
                 this._movingLeft = true;
+                this._currentDirection = constants.LEFT;
             } //if ends
             if (key == 68) {
                 this._movingRight = true;
+                this._currentDirection = constants.RIGHT;
             } //if ends
         }//method actionStart ends
 

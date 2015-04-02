@@ -1,6 +1,9 @@
 ﻿module objects {
 
     export class Cloud extends objects.GameObject {
+        //instance variables
+        private _dx: number;
+        private _dy: number;
 
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++
         constructor() {

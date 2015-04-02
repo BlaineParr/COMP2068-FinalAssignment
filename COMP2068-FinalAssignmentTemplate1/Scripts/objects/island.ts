@@ -1,6 +1,9 @@
 ﻿module objects {
 
     export class Island extends objects.GameObject {
+        //instance varibables
+        private _dx: number;
+        private _dy: number;
 
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++
         constructor() {

@@ -4,6 +4,7 @@
 /// <reference path="../objects/island.ts" />
 /// <reference path="../objects/ocean.ts" />
 /// <reference path="../objects/plane.ts" />
+/// <reference path="../objects/pongball.ts" />
 /// <reference path="../objects/button.ts" />
 /// <reference path="../objects/label.ts" />
 /// <reference path="../objects/scoreboard.ts" />
@@ -22,7 +23,7 @@ var states;
             this.island = new objects.Island();
             this.game.addChild(this.island);
             //add plane to game
-            this.plane = new objects.Plane();
+            this.plane = new objects.Plane(this.game);
             this.game.addChild(this.plane);
             for (var cloud = constants.CLOUD_NUM; cloud > 0; cloud--) {
                 this.clouds[cloud] = new objects.Cloud();

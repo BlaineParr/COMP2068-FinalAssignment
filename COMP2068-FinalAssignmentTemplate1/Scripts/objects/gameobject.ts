@@ -8,10 +8,6 @@
         public soundString: string;
         public name: string;
 
-        // PRIVATE VARIABLE
-        protected _dy;
-        protected _dx;
-
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++
         constructor(assetString:string) {
             super(assetLoader.getResult(assetString));

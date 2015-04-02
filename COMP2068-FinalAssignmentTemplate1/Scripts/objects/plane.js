@@ -8,7 +8,7 @@ var objects;
 (function (objects) {
     var Plane = (function (_super) {
         __extends(Plane, _super);
-        // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++
+        //Constructor/////////////////////////////////////////////////////////////////////////////
         function Plane() {
             _super.call(this, assetLoader.getResult("plane"));
             this.name = "plane";
@@ -18,13 +18,52 @@ var objects;
             this.regY = this.height * 0.5;
             this.y = 430;
             createjs.Sound.play("engine", { loop: -1 });
-        }
-        // PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++++
+        } //constructor ends
+        //Public Methods//////////////////////////////////////////////////////////////////////////
         Plane.prototype.update = function () {
-            this.x = stage.mouseX;
-        };
+            if (this._movingUp) {
+                this.y -= 5;
+            } //if ends
+            if (this._movingDown) {
+                this.y += 5;
+            } //else if ends
+            if (this._movingLeft) {
+                this.x -= 5;
+            } //else if ends
+            if (this._movingRight) {
+                this.x += 5;
+            } //else if ends
+        }; //method update ends
+        Plane.prototype.actionStart = function (key) {
+            if (key == 87) {
+                this._movingUp = true;
+            } //if ends
+            if (key == 83) {
+                this._movingDown = true;
+            } //if ends
+            if (key == 65) {
+                this._movingLeft = true;
+            } //if ends
+            if (key == 68) {
+                this._movingRight = true;
+            } //if ends
+        }; //method actionStart ends
+        Plane.prototype.actionEnd = function (key) {
+            if (key == 87) {
+                this._movingUp = false;
+            } //if ends
+            if (key == 83) {
+                this._movingDown = false;
+            } //if ends
+            if (key == 65) {
+                this._movingLeft = false;
+            } //if ends
+            if (key == 68) {
+                this._movingRight = false;
+            } //if ends
+        }; //method actionStart ends
         return Plane;
     })(createjs.Bitmap);
-    objects.Plane = Plane;
-})(objects || (objects = {}));
+    objects.Plane = Plane; //class Plane ends
+})(objects || (objects = {})); //module objects ends
 //# sourceMappingURL=plane.js.map

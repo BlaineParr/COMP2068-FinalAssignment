@@ -9,20 +9,19 @@
 /// <reference path="../objects/scoreboard.ts" />
 var states;
 (function (states) {
-    // PLAY STATE
     var Play = (function () {
-        // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        //Constructor/////////////////////////////////////////////////////////////////////////////
         function Play() {
             this.clouds = [];
-            // Instantiate Game Container
+            //instantiate Game Container
             this.game = new createjs.Container();
-            // Add ocean to game
+            //add ocean to game
             this.ocean = new objects.Ocean();
             this.game.addChild(this.ocean);
-            // Add island to game
+            //add island to game
             this.island = new objects.Island();
             this.game.addChild(this.island);
-            // Add plane to game
+            //add plane to game
             this.plane = new objects.Plane();
             this.game.addChild(this.plane);
             for (var cloud = constants.CLOUD_NUM; cloud > 0; cloud--) {
@@ -30,14 +29,24 @@ var states;
                 this.game.addChild(this.clouds[cloud]);
             }
             this.scoreboard = new objects.ScoreBoard(this.game);
+            //set up the game for keyboard input
+            //this section checks which key was pressed
+            document.addEventListener("keydown", function (event) {
+                event.preventDefault(); //stops the page from scrolling down when space is pressed
+                play.plane.actionStart(event.keyCode); //send the plane the key that was pressed
+            });
+            //this section checks which key was released
+            document.addEventListener("keyup", function (event) {
+                play.plane.actionEnd(event.keyCode); //send the plane the key that was pressed
+            });
             stage.addChild(this.game);
-        } // constructor end
-        // PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++++++++++++++
+        } //constructor ends
+        //Public Methods//////////////////////////////////////////////////////////////////////////
         // Calculate the distance between two points
         Play.prototype.distance = function (p1, p2) {
             return Math.floor(Math.sqrt(Math.pow((p2.x - p1.x), 2) + Math.pow((p2.y - p1.y), 2)));
-        }; // distance end
-        // CHeck Collision Method
+        }; //method distance ends
+        //Check Collision Method
         Play.prototype.checkCollision = function (collider) {
             var p1 = new createjs.Point();
             var p2 = new createjs.Point();
@@ -58,13 +67,13 @@ var states;
                             this.scoreboard.lives--;
                             break;
                     }
-                }
+                } //if ends
             }
             else {
                 collider.isColliding = false;
-            }
-        }; // checkCollision end
-        // UPDATE METHOD
+            } //else ends
+        }; //method checkCollision ends
+        //Update Method
         Play.prototype.update = function () {
             this.ocean.update();
             this.plane.update();
@@ -75,7 +84,7 @@ var states;
                     this.checkCollision(this.clouds[cloud]);
                 }
                 this.checkCollision(this.island);
-            }
+            } //if ends
             this.scoreboard.update();
             if (this.scoreboard.lives < 1) {
                 createjs.Sound.stop();
@@ -84,13 +93,13 @@ var states;
                 finalScore = this.scoreboard.score;
                 if (finalScore > highScore) {
                     highScore = finalScore;
-                }
+                } //if ends
                 currentState = constants.GAME_OVER_STATE;
                 stateChanged = true;
-            }
-        }; // update method end
+            } //if ends
+        }; //method update ends
         return Play;
     })();
-    states.Play = Play;
-})(states || (states = {}));
+    states.Play = Play; //class play ends
+})(states || (states = {})); //module objects ends
 //# sourceMappingURL=play.js.map

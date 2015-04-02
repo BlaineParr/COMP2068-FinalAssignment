@@ -93,6 +93,9 @@ var states;
                     this.clouds[cloud].update();
                 }
             } //if ends
+            for (var pongBall = this.plane.numberOfPongBalls - 1; pongBall >= 0; pongBall--) {
+                this.plane.pongBalls[pongBall].update();
+            }
             this.scoreboard.update();
             if (this.scoreboard.lives < 1) {
                 createjs.Sound.stop();

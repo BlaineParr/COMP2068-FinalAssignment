@@ -12,7 +12,11 @@ module objects {
             super("pongBall");
             this.x = x;
             this.y = y;
-  
+
+            this._dx = 0;
+            this._dy = 0;
+
+            console.log(direction);
             this._setDirection(direction);
             //this.soundString = "laser_sound";
         } //constructor ends

@@ -17,6 +17,9 @@ var objects;
             this.regY = this.height * 0.5;
             this.isColliding = false;
         }
+        //empty collide method that will be modified in the seperate objects 
+        GameObject.prototype.collide = function () {
+        };
         return GameObject;
     })(createjs.Bitmap);
     objects.GameObject = GameObject;

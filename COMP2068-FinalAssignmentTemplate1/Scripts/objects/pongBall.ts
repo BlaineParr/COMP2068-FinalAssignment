@@ -30,7 +30,7 @@ module objects {
             }
 
         }
-        public hit() {
+        public collide() {
             
 
         }

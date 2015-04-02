@@ -24,7 +24,9 @@
 
             this.isColliding = false;
         }
-
+        //empty collide method that will be modified in the seperate objects 
+        public collide() {
+        }
 
     }
 

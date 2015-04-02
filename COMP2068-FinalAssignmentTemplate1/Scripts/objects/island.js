@@ -32,6 +32,8 @@ var objects;
             this.y += this._dy;
             this._checkBounds();
         };
+        Island.prototype.collide = function () {
+        };
         return Island;
     })(objects.GameObject);
     objects.Island = Island;

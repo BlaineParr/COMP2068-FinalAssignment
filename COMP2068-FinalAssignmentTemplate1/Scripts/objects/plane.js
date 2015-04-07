@@ -13,7 +13,7 @@ var objects;
             _super.call(this, "plane");
             this.pongBalls = [];
             this._container = container;
-            this._scoreBoard = scoreBoard;
+            this._scoreboard = scoreBoard;
             this.name = "plane";
             this.width = this.getBounds().width;
             this.height = this.getBounds().height;
@@ -81,7 +81,7 @@ var objects;
             } //if ends
         }; //method actionStart ends
         Plane.prototype.collide = function () {
-            this._scoreBoard.lives--;
+            this._scoreboard.lives--;
         }; //method collide ends
         return Plane;
     })(objects.GameObject);

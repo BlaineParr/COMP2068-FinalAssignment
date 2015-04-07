@@ -34,6 +34,9 @@ module states {
             this.game.addChild(this.island);
 
 
+            //add scoreboard to the game
+            this.scoreboard = new objects.ScoreBoard(this.game);
+
             //add plane to game
             this.plane = new objects.Plane(this.game, this.scoreboard);
             this.game.addChild(this.plane);
@@ -43,8 +46,6 @@ module states {
                 this.clouds[cloud] = new objects.Cloud();
                 this.game.addChild(this.clouds[cloud]);
             } //for ends
-
-            this.scoreboard = new objects.ScoreBoard(this.game);
 
             //set up the game for keyboard input
             //this section checks which key was pressed

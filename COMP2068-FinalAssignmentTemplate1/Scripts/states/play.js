@@ -22,6 +22,8 @@ var states;
             //add island to game
             this.island = new objects.Island();
             this.game.addChild(this.island);
+            //add scoreboard to the game
+            this.scoreboard = new objects.ScoreBoard(this.game);
             //add plane to game
             this.plane = new objects.Plane(this.game, this.scoreboard);
             this.game.addChild(this.plane);
@@ -29,7 +31,6 @@ var states;
                 this.clouds[cloud] = new objects.Cloud();
                 this.game.addChild(this.clouds[cloud]);
             }
-            this.scoreboard = new objects.ScoreBoard(this.game);
             //set up the game for keyboard input
             //this section checks which key was pressed
             document.addEventListener("keydown", function (event) {

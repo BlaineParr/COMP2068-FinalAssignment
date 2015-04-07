@@ -3,7 +3,7 @@
     export class Plane extends objects.GameObject {
         //instance variables
         private _container: createjs.Container;
-        private _scoreBoard: objects.ScoreBoard;
+        private _scoreboard: objects.ScoreBoard;
         private _movingUp: boolean;
         private _movingDown: boolean;
         private _movingLeft: boolean;
@@ -20,7 +20,7 @@
             super("plane");
 
             this._container = container;
-            this._scoreBoard = scoreBoard;
+            this._scoreboard = scoreBoard;
 
             this.name = "plane";
 
@@ -100,7 +100,7 @@
         }//method actionStart ends
 
         public collide(): void {
-            this._scoreBoard.lives--;
+            this._scoreboard.lives--;
         } //method collide ends
     } //class Plane ends
 } //module objects ends

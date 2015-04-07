@@ -28,7 +28,7 @@ var states;
             this.plane = new objects.Plane(this.game, this.scoreboard);
             this.game.addChild(this.plane);
             for (var cloud = constants.CLOUD_NUM; cloud > 0; cloud--) {
-                this.clouds[cloud] = new objects.Cloud();
+                this.clouds[cloud] = new objects.Cloud(this.scoreboard);
                 this.game.addChild(this.clouds[cloud]);
             }
             //set up the game for keyboard input
@@ -60,21 +60,19 @@ var states;
             if (this.distance(p2, p1) < ((collider1.height * 0.5) + (collider2.height * 0.5))) {
                 if (!collider2.isColliding && !collider1.isColliding) {
                     //createjs.Sound.play(collider2.soundString);
-                    collider1.isColliding = true;
-                    collider2.isColliding = true;
                     if (hit1) {
                         collider1.collide();
-                    }
+                    } //if ends
                     if (hit2) {
                         collider2.collide();
-                    }
-                }
+                    } //if ends
+                } //if ends
             }
             else {
                 collider1.isColliding = false;
                 collider2.isColliding = false;
-            }
-        };
+            } //else ends
+        }; //method checkCollision ends
         //Update Method
         Play.prototype.update = function () {
             this.ocean.update();
@@ -87,6 +85,9 @@ var states;
                 }
                 for (var pongBall = this.plane.numberOfPongBalls - 1; pongBall >= 0; pongBall--) {
                     this.plane.pongBalls[pongBall].update();
+                    for (var cloud = constants.CLOUD_NUM; cloud > 0; cloud--) {
+                        this.checkCollision(this.plane.pongBalls[pongBall], true, this.clouds[cloud], true);
+                    }
                 }
                 this.checkCollision(this.island, true, this.plane, false);
             } //if ends

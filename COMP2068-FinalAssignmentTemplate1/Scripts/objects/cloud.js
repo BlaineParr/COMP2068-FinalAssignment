@@ -9,10 +9,11 @@ var objects;
     var Cloud = (function (_super) {
         __extends(Cloud, _super);
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++
-        function Cloud() {
+        function Cloud(scoreboard) {
             _super.call(this, "cloud");
             this.name = "cloud";
             this.soundString = "thunder";
+            this._scoreboard = scoreboard;
             this._reset();
         }
         // PRIVATE METHODS ++++++++++++++++++++++++++++++++++++++++
@@ -36,7 +37,8 @@ var objects;
             this._checkBounds();
         };
         Cloud.prototype.collide = function () {
-        };
+            this._scoreboard.score += 50;
+        }; //method collide ends
         return Cloud;
     })(objects.GameObject);
     objects.Cloud = Cloud;

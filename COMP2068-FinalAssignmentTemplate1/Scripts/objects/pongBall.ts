@@ -41,7 +41,7 @@ module objects {
         } //method update ends
 
         public collide() {
-            
+            console.log("I killed a cloud");
         } //method collide ends
     } //class PongBall ends
 } //module objects ends

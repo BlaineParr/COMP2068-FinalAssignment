@@ -4,12 +4,14 @@
         //instance variables
         private _dx: number;
         private _dy: number;
+        private _scoreboard: objects.ScoreBoard;
 
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++
-        constructor() {
+        constructor(scoreboard: objects.ScoreBoard) {
             super("cloud");
             this.name = "cloud";
             this.soundString = "thunder";
+            this._scoreboard = scoreboard;
 
             this._reset();
 
@@ -43,7 +45,8 @@
         }
 
         public collide() {
-        }
+            this._scoreboard.score += 50;
+        } //method collide ends
 
 
     }

@@ -43,7 +43,7 @@ module states {
 
             //add clouds to game
             for (var cloud = constants.CLOUD_NUM; cloud > 0; cloud--) {
-                this.clouds[cloud] = new objects.Cloud();
+                this.clouds[cloud] = new objects.Cloud(this.scoreboard);
                 this.game.addChild(this.clouds[cloud]);
             } //for ends
 
@@ -83,22 +83,20 @@ module states {
             if (this.distance(p2, p1) < ((collider1.height * 0.5) + (collider2.height * 0.5))) {
                 if (!collider2.isColliding && !collider1.isColliding) { // Collision has occurred
                     //createjs.Sound.play(collider2.soundString);
-                    collider1.isColliding = true;
-                    collider2.isColliding = true;
-
-                    
                     if (hit1) {
-                        collider1. collide();
-                    }
+                        collider1.collide();
+                    } //if ends
+
                     if (hit2) {
                         collider2.collide();
-                    }
-                }
-            } else {
+                    } //if ends
+                } //if ends
+            } //if ends
+            else {
                 collider1.isColliding = false;
                 collider2.isColliding = false;
-            }
-        } 
+            } //else ends
+        } //method checkCollision ends
 
         //Update Method
         public update(): void {
@@ -110,12 +108,17 @@ module states {
                 for (var cloud = constants.CLOUD_NUM; cloud > 0; cloud--) {
                     this.clouds[cloud].update();
                     this.checkCollision(this.clouds[cloud], false, this.plane, true);
-                    
                 } //for ends
+
                 for (var pongBall = this.plane.numberOfPongBalls - 1; pongBall >= 0; pongBall--) {
                     this.plane.pongBalls[pongBall].update();
                    // this.checkCollision(this.clouds[cloud], true, this.plane.pongBalls[pongBall], true);
+
+                    for (var cloud = constants.CLOUD_NUM; cloud > 0; cloud--) {
+                        this.checkCollision(this.plane.pongBalls[pongBall], true, this.clouds[cloud], true);
+                    } //if ends
                 } //for ends
+
                 this.checkCollision(this.island, true, this.plane, false);
             } //if ends
 

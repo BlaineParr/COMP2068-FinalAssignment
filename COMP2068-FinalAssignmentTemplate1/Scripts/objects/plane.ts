@@ -1,8 +1,9 @@
 ﻿module objects {
 
-    export class Plane extends createjs.Bitmap {
+    export class Plane extends objects.GameObject {
         //instance variables
         private _container: createjs.Container;
+        private _scoreBoard: objects.ScoreBoard;
         private _movingUp: boolean;
         private _movingDown: boolean;
         private _movingLeft: boolean;
@@ -15,10 +16,11 @@
         public numberOfPongBalls: number;
 
         //Constructor/////////////////////////////////////////////////////////////////////////////
-        constructor(container: createjs.Container) {
-            super(assetLoader.getResult("plane"));
+        constructor(container: createjs.Container, scoreBoard: objects.ScoreBoard) {
+            super("plane");
 
             this._container = container;
+            this._scoreBoard = scoreBoard;
 
             this.name = "plane";
 
@@ -96,5 +98,9 @@
                 this._movingRight = false;
             } //if ends
         }//method actionStart ends
+
+        public collide(): void {
+            this._scoreBoard.lives--;
+        } //method collide ends
     } //class Plane ends
 } //module objects ends

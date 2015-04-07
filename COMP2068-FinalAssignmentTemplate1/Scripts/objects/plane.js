@@ -9,10 +9,11 @@ var objects;
     var Plane = (function (_super) {
         __extends(Plane, _super);
         //Constructor/////////////////////////////////////////////////////////////////////////////
-        function Plane(container) {
-            _super.call(this, assetLoader.getResult("plane"));
+        function Plane(container, scoreBoard) {
+            _super.call(this, "plane");
             this.pongBalls = [];
             this._container = container;
+            this._scoreBoard = scoreBoard;
             this.name = "plane";
             this.width = this.getBounds().width;
             this.height = this.getBounds().height;
@@ -79,8 +80,11 @@ var objects;
                 this._movingRight = false;
             } //if ends
         }; //method actionStart ends
+        Plane.prototype.collide = function () {
+            this._scoreBoard.lives--;
+        }; //method collide ends
         return Plane;
-    })(createjs.Bitmap);
+    })(objects.GameObject);
     objects.Plane = Plane; //class Plane ends
 })(objects || (objects = {})); //module objects ends
 //# sourceMappingURL=plane.js.map

@@ -8,7 +8,9 @@
         private _movingDown: boolean;
         private _movingLeft: boolean;
         private _movingRight: boolean;
+        private _firing: boolean;
         private _currentDirection: number;
+        private _shotDelay: number;
         public width: number;
         public height: number;
         public name: string;
@@ -36,18 +38,27 @@
 
             this.numberOfPongBalls = 0;
 
+            this._shotDelay = 0;
+
             createjs.Sound.play("engine", { loop: -1 });
         } //constructor ends
 
         //Private Methods/////////////////////////////////////////////////////////////////////////
         public _shoot(): void {
-            this.pongBalls[this.numberOfPongBalls] = new objects.PongBall(this._container, this.x, this.y, this._currentDirection, this);
-            this._container.addChild(this.pongBalls[this.numberOfPongBalls]);
-            this.numberOfPongBalls++;
+            if (Date.now() > this._shotDelay) {
+                this._shotDelay = Date.now() + 250;
+
+                this.pongBalls[this.numberOfPongBalls] = new objects.PongBall(this._container, this.x, this.y, this._currentDirection, this);
+                this._container.addChild(this.pongBalls[this.numberOfPongBalls]);
+                this.numberOfPongBalls++;
+            } //if ends
         } //method shoot ends
 
         //Public Methods//////////////////////////////////////////////////////////////////////////
         public update(): void {
+            if (this._firing) {
+                this._shoot();
+            } //if ends
             if (this._movingUp) {
                 this.y -= 5;
             } //if ends
@@ -64,7 +75,7 @@
 
         public actionStart(key): void {
             if (key == 32) {
-                this._shoot();
+                this._firing = true;
             } //if ends
             if (key == 87) {
                 this._movingUp = true;
@@ -85,6 +96,9 @@
         }//method actionStart ends
 
         public actionEnd(key): void {
+            if (key == 32) {
+                this._firing = false;
+            } //if ends
             if (key == 87) {
                 this._movingUp = false;
             } //if ends

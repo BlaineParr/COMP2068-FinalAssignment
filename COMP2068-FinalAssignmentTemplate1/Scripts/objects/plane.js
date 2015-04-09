@@ -22,16 +22,23 @@ var objects;
             this._currentDirection = constants.DOWN;
             this.y = 430;
             this.numberOfPongBalls = 0;
+            this._shotDelay = 0;
             createjs.Sound.play("engine", { loop: -1 });
         } //constructor ends
         //Private Methods/////////////////////////////////////////////////////////////////////////
         Plane.prototype._shoot = function () {
-            this.pongBalls[this.numberOfPongBalls] = new objects.PongBall(this._container, this.x, this.y, this._currentDirection, this);
-            this._container.addChild(this.pongBalls[this.numberOfPongBalls]);
-            this.numberOfPongBalls++;
+            if (Date.now() > this._shotDelay) {
+                this._shotDelay = Date.now() + 250;
+                this.pongBalls[this.numberOfPongBalls] = new objects.PongBall(this._container, this.x, this.y, this._currentDirection, this);
+                this._container.addChild(this.pongBalls[this.numberOfPongBalls]);
+                this.numberOfPongBalls++;
+            } //if ends
         }; //method shoot ends
         //Public Methods//////////////////////////////////////////////////////////////////////////
         Plane.prototype.update = function () {
+            if (this._firing) {
+                this._shoot();
+            } //if ends
             if (this._movingUp) {
                 this.y -= 5;
             } //if ends
@@ -47,7 +54,7 @@ var objects;
         }; //method update ends
         Plane.prototype.actionStart = function (key) {
             if (key == 32) {
-                this._shoot();
+                this._firing = true;
             } //if ends
             if (key == 87) {
                 this._movingUp = true;
@@ -67,6 +74,9 @@ var objects;
             } //if ends
         }; //method actionStart ends
         Plane.prototype.actionEnd = function (key) {
+            if (key == 32) {
+                this._firing = false;
+            } //if ends
             if (key == 87) {
                 this._movingUp = false;
             } //if ends

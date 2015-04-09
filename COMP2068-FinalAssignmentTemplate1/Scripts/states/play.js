@@ -87,7 +87,9 @@ var states;
                 for (var pongBall = this.plane.numberOfPongBalls - 1; pongBall >= 0; pongBall--) {
                     this.plane.pongBalls[pongBall].update();
                     for (var cloud = constants.CLOUD_NUM; cloud > 0; cloud--) {
-                        this.checkCollision(this.plane.pongBalls[pongBall], true, this.clouds[cloud], true);
+                        if (this.plane.pongBalls[pongBall] != null) {
+                            this.checkCollision(this.plane.pongBalls[pongBall], true, this.clouds[cloud], true);
+                        } //if ends
                     }
                 }
                 this.checkCollision(this.island, true, this.plane, false);

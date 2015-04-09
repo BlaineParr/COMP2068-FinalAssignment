@@ -22,7 +22,6 @@ module objects {
             this._dx = 0;
             this._dy = 0;
 
-            console.log(direction);
             this._setDirection(direction);
             //this.soundString = "laser_sound";
         } //constructor ends
@@ -30,13 +29,13 @@ module objects {
         //Private Methods/////////////////////////////////////////////////////////////////////////
         private _setDirection(direction): void {
             switch (direction) {
-                case constants.UP: this._dy = -5;
+                case constants.UP: this._dy = -10;
                     break;
-                case constants.DOWN: this._dy = 5;
+                case constants.DOWN: this._dy = 10;
                     break;
-                case constants.LEFT: this._dx = -5;
+                case constants.LEFT: this._dx = -10;
                     break;
-                case constants.RIGHT: this._dx = 5;
+                case constants.RIGHT: this._dx = 10;
             } //switch ends
         } //method setDirection ends
 

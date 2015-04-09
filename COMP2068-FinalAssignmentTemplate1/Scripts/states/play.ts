@@ -118,7 +118,9 @@ module states {
                    // this.checkCollision(this.clouds[cloud], true, this.plane.pongBalls[pongBall], true);
 
                     for (var cloud = constants.CLOUD_NUM; cloud > 0; cloud--) {
-                        this.checkCollision(this.plane.pongBalls[pongBall], true, this.clouds[cloud], true);
+                        if (this.plane.pongBalls[pongBall] != null) {
+                            this.checkCollision(this.plane.pongBalls[pongBall], true, this.clouds[cloud], true);
+                        } //if ends
                     } //if ends
                 } //for ends
 

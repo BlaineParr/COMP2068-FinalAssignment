@@ -8,9 +8,7 @@
 
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++
         constructor(scoreboard: objects.ScoreBoard) {
-            super("cloud");
-            this.name = "cloud";
-            this.soundString = "thunder";
+            super("biklops");
             this._scoreboard = scoreboard;
 
             this._reset();

@@ -10,7 +10,7 @@ var objects;
         __extends(Plane, _super);
         //Constructor/////////////////////////////////////////////////////////////////////////////
         function Plane(container, scoreBoard) {
-            _super.call(this, "plane");
+            _super.call(this, "robin");
             this.pongBalls = [];
             this._container = container;
             this._scoreboard = scoreBoard;

@@ -10,9 +10,7 @@ var objects;
         __extends(Cloud, _super);
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++
         function Cloud(scoreboard) {
-            _super.call(this, "cloud");
-            this.name = "cloud";
-            this.soundString = "thunder";
+            _super.call(this, "biklops");
             this._scoreboard = scoreboard;
             this._reset();
         }

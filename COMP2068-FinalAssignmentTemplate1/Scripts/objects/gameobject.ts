@@ -5,8 +5,6 @@
         public width: number;
         public height: number;
         public isColliding: boolean;
-        public soundString: string;
-        public name: string;
 
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++
         constructor(assetString:string) {

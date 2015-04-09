@@ -35,11 +35,11 @@ var play;
 var menu;
 // asset manifest - array of asset objects
 var manifest = [
-    { id: "cloud", src: "assets/images/cloud.png" },
+    { id: "biklops", src: "assets/images/biklops.png" },
     { id: "pongBall", src: "assets/images/pongBall.png" },
     { id: "island", src: "assets/images/island.png" },
     { id: "ocean", src: "assets/images/gameTemplate.png" },
-    { id: "plane", src: "assets/images/plane.png" },
+    { id: "robin", src: "assets/images/robin.png" },
     { id: "tryAgainButton", src: "assets/images/tryAgainButton.png" },
     { id: "playButton", src: "assets/images/playButton.png" },
     { id: "engine", src: "assets/audio/engine.ogg" },

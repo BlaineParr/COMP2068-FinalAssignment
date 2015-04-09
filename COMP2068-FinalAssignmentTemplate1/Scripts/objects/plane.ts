@@ -19,7 +19,7 @@
 
         //Constructor/////////////////////////////////////////////////////////////////////////////
         constructor(container: createjs.Container, scoreBoard: objects.ScoreBoard) {
-            super("plane");
+            super("robin");
 
             this._container = container;
             this._scoreboard = scoreBoard;

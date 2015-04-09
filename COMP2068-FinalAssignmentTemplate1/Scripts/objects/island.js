@@ -11,9 +11,7 @@ var objects;
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++
         function Island() {
             _super.call(this, "island");
-            this.name = "island";
             this._dy = 5;
-            this.soundString = "yay";
             this._reset();
         }
         // PRIVATE METHODS ++++++++++++++++++++++++++++++++++++++++

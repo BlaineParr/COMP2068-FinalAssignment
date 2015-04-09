@@ -8,11 +8,7 @@
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++
         constructor() {
             super("island");
-
-            this.name = "island";
-
             this._dy = 5;
-            this.soundString = "yay";
 
             this._reset();
             

@@ -66,6 +66,7 @@
     <Content Include="assets\images\ocean.gif" />
     <Content Include="assets\images\plane.png" />
     <Content Include="assets\images\playButton.png" />
+    <Content Include="assets\images\pongBall.png" />
     <Content Include="assets\images\sideplane.gif" />
     <Content Include="assets\images\tryAgainButton.png" />
     <Content Include="css\game.css" />

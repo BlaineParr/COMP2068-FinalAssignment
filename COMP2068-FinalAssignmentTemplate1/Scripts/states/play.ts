@@ -79,10 +79,13 @@ module states {
             p1.y = collider1.y;
             p2.x = collider2.x;
             p2.y = collider2.y;
+
             // Check for Collision
             if (this.distance(p2, p1) < ((collider1.height * 0.5) + (collider2.height * 0.5))) {
                 if (!collider2.isColliding && !collider1.isColliding) { // Collision has occurred
-                    //createjs.Sound.play(collider2.soundString);
+                    collider1.isColliding = true;
+                    collider2.isColliding = true;
+
                     if (hit1) {
                         collider1.collide();
                     } //if ends

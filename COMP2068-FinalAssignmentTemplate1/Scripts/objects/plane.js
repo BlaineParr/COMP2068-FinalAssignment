@@ -26,7 +26,7 @@ var objects;
         } //constructor ends
         //Private Methods/////////////////////////////////////////////////////////////////////////
         Plane.prototype._shoot = function () {
-            this.pongBalls[this.numberOfPongBalls] = new objects.PongBall(this.x, this.y, this._currentDirection);
+            this.pongBalls[this.numberOfPongBalls] = new objects.PongBall(this._container, this.x, this.y, this._currentDirection, this);
             this._container.addChild(this.pongBalls[this.numberOfPongBalls]);
             this.numberOfPongBalls++;
         }; //method shoot ends

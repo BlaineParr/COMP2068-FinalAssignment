@@ -59,7 +59,8 @@ var states;
             // Check for Collision
             if (this.distance(p2, p1) < ((collider1.height * 0.5) + (collider2.height * 0.5))) {
                 if (!collider2.isColliding && !collider1.isColliding) {
-                    //createjs.Sound.play(collider2.soundString);
+                    collider1.isColliding = true;
+                    collider2.isColliding = true;
                     if (hit1) {
                         collider1.collide();
                     } //if ends

@@ -3,6 +3,7 @@
 /// <reference path="../objects/biklops.ts" />
 /// <reference path="../objects/island.ts" />
 /// <reference path="../objects/ocean.ts" />
+/// <reference path="../objects/door.ts" />
 /// <reference path="../objects/plane.ts" />
 /// <reference path="../objects/pongball.ts" />
 /// <reference path="../objects/button.ts" />
@@ -18,6 +19,7 @@ module states {
         public clouds: objects.Biklops[] = [];
         public ocean: objects.Ocean;
         public scoreboard: objects.ScoreBoard;
+        public door: objects.Door;
 
         //Constructor/////////////////////////////////////////////////////////////////////////////
         constructor() {
@@ -32,6 +34,10 @@ module states {
             //add island to game
             this.island = new objects.Island();
             this.game.addChild(this.island);
+
+            //add door to the game
+            this.door = new objects.Door();
+            this.game.addChild(this.door);
 
 
             //add scoreboard to the game
@@ -125,6 +131,7 @@ module states {
                 } //for ends
 
                 this.checkCollision(this.island, true, this.plane, false);
+                this.checkCollision(this.plane, false, this.door, true);
             } //if ends
 
             

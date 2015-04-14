@@ -3,6 +3,7 @@
 /// <reference path="../objects/biklops.ts" />
 /// <reference path="../objects/island.ts" />
 /// <reference path="../objects/ocean.ts" />
+/// <reference path="../objects/door.ts" />
 /// <reference path="../objects/plane.ts" />
 /// <reference path="../objects/pongball.ts" />
 /// <reference path="../objects/button.ts" />
@@ -22,6 +23,9 @@ var states;
             //add island to game
             this.island = new objects.Island();
             this.game.addChild(this.island);
+            //add door to the game
+            this.door = new objects.Door();
+            this.game.addChild(this.door);
             //add scoreboard to the game
             this.scoreboard = new objects.ScoreBoard(this.game);
             //add plane to game
@@ -93,6 +97,7 @@ var states;
                     }
                 }
                 this.checkCollision(this.island, true, this.plane, false);
+                this.checkCollision(this.plane, false, this.door, true);
             } //if ends
             this.scoreboard.update();
             if (this.scoreboard.lives < 1) {

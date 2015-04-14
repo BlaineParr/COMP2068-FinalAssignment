@@ -7,8 +7,11 @@
 
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++
         constructor() {
-            super("door");
-            this.name = "door";
+            super("openDoor");
+            this.name = "openDoor";
+            this.x = 100;
+            this.y = 100;
+            this._lockedUnlocked = true;
             
           
         }
@@ -24,6 +27,8 @@
         public collide() {
             
             if (this._lockedUnlocked) {
+                //changes the door to a state we can move on to the next level from
+                changeState(constants.PLAY_STATE);
 
             }
 

@@ -10,6 +10,7 @@
 /// <reference path="objects/island.ts" />
 /// <reference path="objects/biklops.ts" />
 /// <reference path="objects/ocean.ts" />
+/// <reference path="objects/door.ts" />
 /// <reference path="objects/pongball.ts" />
 /// <reference path="objects/label.ts" />
 /// <reference path="objects/button.ts" />
@@ -42,6 +43,8 @@ var manifest = [
     { id: "robin", src: "assets/images/robin.png" },
     { id: "tryAgainButton", src: "assets/images/tryAgainButton.png" },
     { id: "playButton", src: "assets/images/playButton.png" },
+    { id: "closedDoor", src: "assets/images/ClosedDoor.png" },
+    { id: "openDoor", src: "assets/images/OpenDoor.png" },
     { id: "engine", src: "assets/audio/engine.ogg" },
     { id: "yay", src: "assets/audio/yay.ogg" },
     { id: "thunder", src: "assets/audio/thunder.ogg" }

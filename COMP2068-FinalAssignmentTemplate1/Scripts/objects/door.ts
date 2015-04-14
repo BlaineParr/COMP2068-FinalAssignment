@@ -1,14 +1,15 @@
 ﻿module objects {
 
     export class Door extends objects.GameObject {
-
-          public lockedUnlocked: boolean;
+        
+        //door is locked when lockedUnlocked is set to true
+          private _lockedUnlocked: boolean ;
 
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++
         constructor() {
             super("door");
             this.name = "door";
-            //this.soundString = "thunder";
+            
           
         }
 
@@ -22,7 +23,9 @@
 
         public collide() {
             
+            if (this._lockedUnlocked) {
 
+            }
 
       
         }

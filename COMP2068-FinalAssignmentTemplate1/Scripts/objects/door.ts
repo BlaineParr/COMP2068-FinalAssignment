@@ -7,11 +7,11 @@
 
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++
         constructor() {
-            super("openDoor");
-            this.name = "openDoor";
+            super("closedDoor");
+            this.name = "closedDoor";
             this.x = 100;
             this.y = 100;
-            this._lockedUnlocked = true;
+            this._lockedUnlocked = false;
             
           
         }
@@ -29,6 +29,7 @@
             if (this._lockedUnlocked) {
                 //changes the door to a state we can move on to the next level from
                 changeState(constants.PLAY_STATE);
+                this.name = "openDoor";
 
             }
 

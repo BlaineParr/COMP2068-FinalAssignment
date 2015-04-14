@@ -1,6 +1,6 @@
 ﻿/// <reference path="../constants.ts" />
 /// <reference path="../objects/gameobject.ts" />
-/// <reference path="../objects/cloud.ts" />
+/// <reference path="../objects/biklops.ts" />
 /// <reference path="../objects/island.ts" />
 /// <reference path="../objects/ocean.ts" />
 /// <reference path="../objects/plane.ts" />
@@ -15,7 +15,7 @@ module states {
         public game: createjs.Container;
         public plane: objects.Plane;
         public island: objects.Island;
-        public clouds: objects.Cloud[] = [];
+        public clouds: objects.Biklops[] = [];
         public ocean: objects.Ocean;
         public scoreboard: objects.ScoreBoard;
 
@@ -43,7 +43,7 @@ module states {
 
             //add clouds to game
             for (var cloud = constants.CLOUD_NUM; cloud > 0; cloud--) {
-                this.clouds[cloud] = new objects.Cloud(this.scoreboard);
+                this.clouds[cloud] = new objects.Biklops(this.plane, this.scoreboard);
                 this.game.addChild(this.clouds[cloud]);
             } //for ends
 

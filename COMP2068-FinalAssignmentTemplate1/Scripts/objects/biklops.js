@@ -41,7 +41,7 @@ var objects;
                 this._dy = 3;
             }
             else if (this._player.y < this.y) {
-                this._dx = 3;
+                this._dy = -3;
             } //else if ends
         }; //method setDirection ends
         // PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++++
@@ -57,4 +57,4 @@ var objects;
     })(objects.GameObject);
     objects.Biklops = Biklops; //class Biklops ends
 })(objects || (objects = {})); //module objects ends
-//# sourceMappingURL=cloud.js.map
+//# sourceMappingURL=biklops.js.map

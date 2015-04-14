@@ -1,6 +1,6 @@
 /// <reference path="../constants.ts" />
 /// <reference path="../objects/gameobject.ts" />
-/// <reference path="../objects/cloud.ts" />
+/// <reference path="../objects/biklops.ts" />
 /// <reference path="../objects/island.ts" />
 /// <reference path="../objects/ocean.ts" />
 /// <reference path="../objects/plane.ts" />
@@ -28,7 +28,7 @@ var states;
             this.plane = new objects.Plane(this.game, this.scoreboard);
             this.game.addChild(this.plane);
             for (var cloud = constants.CLOUD_NUM; cloud > 0; cloud--) {
-                this.clouds[cloud] = new objects.Cloud(this.scoreboard);
+                this.clouds[cloud] = new objects.Biklops(this.plane, this.scoreboard);
                 this.game.addChild(this.clouds[cloud]);
             }
             //set up the game for keyboard input

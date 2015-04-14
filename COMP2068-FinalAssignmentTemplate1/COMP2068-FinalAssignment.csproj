@@ -61,10 +61,12 @@
   <ItemGroup>
     <Content Include="assets\images\1945.bmp" />
     <Content Include="assets\images\biklops.png" />
+    <Content Include="assets\images\ClosedDoor.png" />
     <Content Include="assets\images\cloud.png" />
     <Content Include="assets\images\gameTemplate.png" />
     <Content Include="assets\images\island.png" />
     <Content Include="assets\images\ocean.gif" />
+    <Content Include="assets\images\OpenDoor.png" />
     <Content Include="assets\images\plane.png" />
     <Content Include="assets\images\playButton.png" />
     <Content Include="assets\images\pongBall.png" />

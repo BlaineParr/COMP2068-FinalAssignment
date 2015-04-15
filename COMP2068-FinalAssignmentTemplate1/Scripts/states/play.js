@@ -34,7 +34,7 @@ var states;
             this.plane = new objects.Plane(this.game, this.scoreboard);
             this.game.addChild(this.plane);
             for (var cloud = constants.CLOUD_NUM; cloud > 0; cloud--) {
-                this.clouds[cloud] = new objects.Biklops(this.plane, this.scoreboard);
+                this.clouds[cloud] = new objects.Slug(this.scoreboard);
                 this.game.addChild(this.clouds[cloud]);
             }
             //set up the game for keyboard input

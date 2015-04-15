@@ -39,8 +39,8 @@ var menu;
 // asset manifest - array of asset objects
 var manifest = [
     { id: "biklops", src: "assets/images/biklops.png" },
-    { id: "blindKoala", src: "assets/images/biklops.png" },
-    { id: "slug", src: "assets/images/biklops.png" },
+    { id: "blindKoala", src: "assets/images/blindKoala.png" },
+    { id: "slug", src: "assets/images/slug.png" },
     { id: "pongBall", src: "assets/images/pongBall.png" },
     { id: "island", src: "assets/images/island.png" },
     { id: "ocean", src: "assets/images/gameTemplate.png" },

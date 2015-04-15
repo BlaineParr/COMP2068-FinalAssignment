@@ -61,6 +61,7 @@
   <ItemGroup>
     <Content Include="assets\images\1945.bmp" />
     <Content Include="assets\images\biklops.png" />
+    <Content Include="assets\images\blindKoala.png" />
     <Content Include="assets\images\ClosedDoor.png" />
     <Content Include="assets\images\cloud.png" />
     <Content Include="assets\images\gameTemplate.png" />
@@ -72,6 +73,7 @@
     <Content Include="assets\images\pongBall.png" />
     <Content Include="assets\images\robin.png" />
     <Content Include="assets\images\sideplane.gif" />
+    <Content Include="assets\images\slug.png" />
     <Content Include="assets\images\tryAgainButton.png" />
     <Content Include="css\game.css" />
     <Content Include="index.html" />

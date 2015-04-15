@@ -53,8 +53,8 @@ var menu: states.Menu;
 var manifest = [
     { id: "biklops", src: "assets/images/biklops.png" },
 //CHANGE BELOW
-    { id: "blindKoala", src: "assets/images/biklops.png" },
-    { id: "slug", src: "assets/images/biklops.png" },
+    { id: "blindKoala", src: "assets/images/blindKoala.png" },
+    { id: "slug", src: "assets/images/slug.png" },
     //CHANGE ABOVE
     { id: "pongBall", src: "assets/images/pongBall.png" },
     { id: "island", src: "assets/images/island.png" },

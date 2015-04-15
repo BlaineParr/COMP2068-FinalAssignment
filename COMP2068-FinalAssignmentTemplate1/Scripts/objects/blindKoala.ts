@@ -8,6 +8,8 @@
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++
         constructor(scoreboard: objects.ScoreBoard) {
             super("blindKoala");
+            this.x = 0;
+            this.y = 0;
             this._scoreboard = scoreboard;
 
             this._reset();
@@ -31,10 +33,10 @@
         } //method _checkBounds ends*/
 
         private _setDirection(): void {
-            if (this.y = 64) {
+            if (this.y < 64) {
                 this._dy = 5;
             } //if ends
-            if (this.y = 576) {
+            if (this.y > 576) {
                 this._dy = -5;
             } //if ends
 

@@ -9,8 +9,8 @@
         constructor(scoreboard: objects.ScoreBoard) {
             super("slug");
             this._scoreboard = scoreboard;
-
-            this._reset();
+            this.x = 0;
+            this.y = 64;
         } //constructor ends
 
         // PRIVATE METHODS ++++++++++++++++++++++++++++++++++++++++
@@ -31,10 +31,10 @@
         } //method _checkBounds ends*/
 
         private _setDirection(): void {
-            if (this.x = 64) {
+            if (this.x < 64) {
                 this._dx = 5;
             } //if ends
-            if (this.x = 896) {
+            if (this.x > 896) {
                 this._dx = -5;
             } //if ends
 

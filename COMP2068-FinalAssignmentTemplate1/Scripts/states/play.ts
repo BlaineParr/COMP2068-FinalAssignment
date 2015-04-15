@@ -18,7 +18,7 @@ module states {
         public game: createjs.Container;
         public plane: objects.Plane;
         public island: objects.Island;
-        public clouds: objects.Biklops[] = [];
+        public clouds: objects.Slug[] = [];
         public ocean: objects.Ocean;
         public scoreboard: objects.ScoreBoard;
         public door: objects.Door;
@@ -51,7 +51,7 @@ module states {
 
             //add clouds to game
             for (var cloud = constants.CLOUD_NUM; cloud > 0; cloud--) {
-                this.clouds[cloud] = new objects.Biklops(this.plane, this.scoreboard);
+                this.clouds[cloud] = new objects.Slug(this.scoreboard);
                 this.game.addChild(this.clouds[cloud]);
             } //for ends
 

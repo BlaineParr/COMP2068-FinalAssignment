@@ -9,8 +9,10 @@
 /// <reference path="objects/gameobject.ts" />
 /// <reference path="objects/plane.ts" />
 /// <reference path="objects/island.ts" />
+/// <reference path="objects/blindkoala.ts" />
 /// <reference path="objects/biklops.ts" />
 /// <reference path="objects/ocean.ts" />
+/// <reference path="objects/slug.ts" />
 /// <reference path="objects/door.ts" />
 /// <reference path="objects/pongball.ts" />
 
@@ -50,6 +52,10 @@ var menu: states.Menu;
 // asset manifest - array of asset objects
 var manifest = [
     { id: "biklops", src: "assets/images/biklops.png" },
+//CHANGE BELOW
+    { id: "blindKoala", src: "assets/images/biklops.png" },
+    { id: "slug", src: "assets/images/biklops.png" },
+    //CHANGE ABOVE
     { id: "pongBall", src: "assets/images/pongBall.png" },
     { id: "island", src: "assets/images/island.png" },
     { id: "ocean", src: "assets/images/gameTemplate.png" },

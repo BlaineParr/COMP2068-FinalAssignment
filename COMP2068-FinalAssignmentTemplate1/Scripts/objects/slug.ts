@@ -34,6 +34,7 @@
             this._health--;
 
             if (this._health <= 0) {
+                this._scoreboard.score += 50;
                 this._array.splice(this._array.indexOf(this), 1);
                 this._container.removeChild(this);
             } //if ends

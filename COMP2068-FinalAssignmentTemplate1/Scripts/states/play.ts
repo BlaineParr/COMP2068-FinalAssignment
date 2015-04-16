@@ -1,7 +1,6 @@
 ﻿/// <reference path="../constants.ts" />
 /// <reference path="../objects/gameobject.ts" />
 /// <reference path="../objects/biklops.ts" />
-/// <reference path="../objects/island.ts" />
 /// <reference path="../objects/ocean.ts" />
 /// <reference path="../objects/blindkoala.ts" />
 /// <reference path="../objects/slug.ts" />
@@ -18,7 +17,6 @@ module states {
         //instance variables
         public game: createjs.Container;
         public plane: objects.Plane;
-        public island: objects.Island;
         public clouds: objects.Slug[] = [];
         public ocean: objects.Ocean;
         public scoreboard: objects.ScoreBoard;
@@ -39,13 +37,8 @@ module states {
             this.ocean = new objects.Ocean();
             this.game.addChild(this.ocean);
 
-
-            //add island to game
-            this.island = new objects.Island();
-            this.game.addChild(this.island);
-
             //add door to the game
-            this.door = new objects.Door();
+            this.door = new objects.Door(464, 0);
             this.game.addChild(this.door);
 
 
@@ -53,7 +46,7 @@ module states {
             this.scoreboard = new objects.ScoreBoard(this.game);
 
             //add plane to game
-            this.plane = new objects.Plane(this.game, this.scoreboard);
+            this.plane = new objects.Plane(464, 534, this.game, this.scoreboard);
             this.game.addChild(this.plane);
 
             //add barriers
@@ -64,7 +57,7 @@ module states {
 
             //add clouds to game
             for (var cloud = constants.CLOUD_NUM; cloud > 0; cloud--) {
-                this.clouds[cloud] = new objects.Slug(this.scoreboard);
+                this.clouds[cloud] = new objects.Slug(200, 300, this.scoreboard);
                 this.game.addChild(this.clouds[cloud]);
             } //for ends
 
@@ -107,7 +100,6 @@ module states {
             } //for ends
 
             this.plane.update();
-            this.island.update();
 
             if (this.scoreboard.lives > 0) {
                 for (var cloud = constants.CLOUD_NUM; cloud > 0; cloud--) {
@@ -126,7 +118,6 @@ module states {
                     } //if ends
                 } //for ends
 
-                this.checkCollision(this.island, true, this.plane, false);
                 this.checkCollision(this.plane, false, this.door, true);
             } //if ends
 

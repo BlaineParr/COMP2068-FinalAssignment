@@ -9,14 +9,12 @@ var objects;
     var Plane = (function (_super) {
         __extends(Plane, _super);
         //Constructor/////////////////////////////////////////////////////////////////////////////
-        function Plane(container, scoreBoard) {
-            _super.call(this, "robin");
+        function Plane(x, y, container, scoreBoard) {
+            _super.call(this, "robin", x, y);
             this.pongBalls = [];
             this._container = container;
             this._scoreboard = scoreBoard;
             this._currentDirection = constants.DOWN;
-            this.x = 100;
-            this.y = 430;
             this.numberOfPongBalls = 0;
             this._shotDelay = 0;
             this._invincible = false;
@@ -26,7 +24,7 @@ var objects;
         Plane.prototype._shoot = function () {
             if (Date.now() > this._shotDelay) {
                 this._shotDelay = Date.now() + 250;
-                this.pongBalls[this.numberOfPongBalls] = new objects.PongBall(this._container, this.x, this.y, this._currentDirection, this);
+                this.pongBalls[this.numberOfPongBalls] = new objects.PongBall(this.x + (this.width / 2), this.y + (this.height / 2), this._container, this._currentDirection, this);
                 this._container.addChild(this.pongBalls[this.numberOfPongBalls]);
                 this.numberOfPongBalls++;
             } //if ends

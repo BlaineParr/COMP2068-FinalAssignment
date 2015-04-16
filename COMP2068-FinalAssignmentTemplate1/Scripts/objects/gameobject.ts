@@ -7,14 +7,14 @@
         public isColliding: boolean;
 
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++
-        constructor(assetString:string) {
+        constructor(assetString: string, x: number, y: number) {
             super(assetLoader.getResult(assetString));
 
             this.width = this.getBounds().width;
             this.height = this.getBounds().height;
 
-            //this.regX = this.width * 0.5;
-            //this.regY = this.height * 0.5;
+            this.x = x;
+            this.y = y;
 
             this.isColliding = false;
         }

@@ -85,9 +85,7 @@
     <Content Include="Scripts\constants.js.map" />
     <Content Include="Scripts\game.js.map" />
     <Content Include="Scripts\objects\button.js.map" />
-    <Content Include="Scripts\objects\cloud.js.map" />
     <Content Include="Scripts\objects\gameobject.js.map" />
-    <Content Include="Scripts\objects\island.js.map" />
     <Content Include="Scripts\objects\label.js.map" />
     <Content Include="Scripts\objects\ocean.js.map" />
     <Content Include="Scripts\objects\plane.js.map" />
@@ -111,9 +109,7 @@
     <Content Include="Scripts\lib\Stats.js" />
     <Content Include="Scripts\lib\tweenjs-0.6.0.min.js" />
     <Content Include="Scripts\objects\button.js" />
-    <Content Include="Scripts\objects\cloud.js" />
     <Content Include="Scripts\objects\gameobject.js" />
-    <Content Include="Scripts\objects\island.js" />
     <Content Include="Scripts\objects\label.js" />
     <Content Include="Scripts\objects\ocean.js" />
     <Content Include="Scripts\objects\plane.js" />
@@ -139,7 +135,6 @@
     <TypeScriptCompile Include="Scripts\objects\biklops.ts" />
     <TypeScriptCompile Include="Scripts\objects\door.ts" />
     <TypeScriptCompile Include="Scripts\objects\gameobject.ts" />
-    <TypeScriptCompile Include="Scripts\objects\island.ts" />
     <TypeScriptCompile Include="Scripts\objects\label.ts" />
     <TypeScriptCompile Include="Scripts\objects\ocean.ts" />
     <TypeScriptCompile Include="Scripts\objects\plane.ts" />

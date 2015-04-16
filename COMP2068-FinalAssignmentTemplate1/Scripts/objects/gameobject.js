@@ -9,12 +9,12 @@ var objects;
     var GameObject = (function (_super) {
         __extends(GameObject, _super);
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++
-        function GameObject(assetString) {
+        function GameObject(assetString, x, y) {
             _super.call(this, assetLoader.getResult(assetString));
             this.width = this.getBounds().width;
             this.height = this.getBounds().height;
-            //this.regX = this.width * 0.5;
-            //this.regY = this.height * 0.5;
+            this.x = x;
+            this.y = y;
             this.isColliding = false;
         }
         //empty collide method that will be modified in the seperate objects 

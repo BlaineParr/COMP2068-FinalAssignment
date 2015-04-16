@@ -10,12 +10,9 @@ module objects {
         private _plane: objects.Plane;
 
         //Constructor/////////////////////////////////////////////////////////////////////////////
-        constructor(container: createjs.Container, x: number, y: number, direction: number, plane: objects.Plane) {
-            super("pongBall");
+        constructor(x: number, y: number, container: createjs.Container, direction: number, plane: objects.Plane) {
+            super("pongBall", x, y);
             this._container = container;
-
-            this.x = x;
-            this.y = y;
 
             this._plane = plane;
 

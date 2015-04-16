@@ -3,52 +3,35 @@
     export class Slug extends objects.GameObject {
         //instance variables
         private _dx: number;
+        private _health: number;
+        private _array: objects.GameObject[] = [];
+        private _container: createjs.Container;
         private _scoreboard: objects.ScoreBoard;
 
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++
-        constructor(scoreboard: objects.ScoreBoard) {
-            super("slug");
+        constructor(x: number, y: number, scoreboard: objects.ScoreBoard) {
+            super("slug", x, y);
             this._scoreboard = scoreboard;
-            this.x = 0;
-            this.y = 64;
+
+            this._dx = 5;
         } //constructor ends
 
         // PRIVATE METHODS ++++++++++++++++++++++++++++++++++++++++
-        private _reset(): void {
-            // set the island to start at a random x value
-            this.x = Math.floor(Math.random() * constants.SCREEN_WIDTH);
-            this.y = -this.height;
-            // add drift to the cloud 
-            this._dx = 5;
 
-        } //reset
-
-        /*
-        private _checkBounds(): void {
-            if (this.y > (constants.SCREEN_HEIGHT + this.height)) {
-                this._reset();
-            } //if ends
-        } //method _checkBounds ends*/
 
         private _setDirection(): void {
-            if (this.x < 64) {
-                this._dx = 5;
-            } //if ends
-            if (this.x > 896) {
-                this._dx = -5;
-            } //if ends
+            
 
 
         } //method setDirection ends
 
         // PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++++
         public update(): void {
-            this._setDirection();
+            if (this.x <= 64 || this.x >= 896 - (this.width / 2)) {
+                this._dx *= -1;
+            } //if ends
 
             this.x += this._dx;
-
-
-
         } //method update ends
 
         public collide(): void {

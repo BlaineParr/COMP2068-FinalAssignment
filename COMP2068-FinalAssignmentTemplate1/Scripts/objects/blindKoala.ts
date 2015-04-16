@@ -6,31 +6,12 @@
         private _scoreboard: objects.ScoreBoard;
 
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++
-        constructor(scoreboard: objects.ScoreBoard) {
-            super("blindKoala");
-            this.x = 0;
-            this.y = 0;
+        constructor(x: number, y: number, scoreboard: objects.ScoreBoard) {
+            super("blindKoala", x, y);
             this._scoreboard = scoreboard;
-
-            this._reset();
         } //constructor ends
 
         // PRIVATE METHODS ++++++++++++++++++++++++++++++++++++++++
-        private _reset(): void {
-            // set the island to start at a random x value
-            this.x = Math.floor(Math.random() * constants.SCREEN_WIDTH);
-            this.y = -this.height;
-            // add drift to the cloud 
-            this._dy = 5;
-
-        } //reset
-
-        /*
-        private _checkBounds(): void {
-            if (this.y > (constants.SCREEN_HEIGHT + this.height)) {
-                this._reset();
-            } //if ends
-        } //method _checkBounds ends*/
 
         private _setDirection(): void {
             if (this.y < 64) {

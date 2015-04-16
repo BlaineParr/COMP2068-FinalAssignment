@@ -1,7 +1,6 @@
 /// <reference path="../constants.ts" />
 /// <reference path="../objects/gameobject.ts" />
 /// <reference path="../objects/biklops.ts" />
-/// <reference path="../objects/island.ts" />
 /// <reference path="../objects/ocean.ts" />
 /// <reference path="../objects/blindkoala.ts" />
 /// <reference path="../objects/slug.ts" />
@@ -28,16 +27,13 @@ var states;
             //add ocean to game
             this.ocean = new objects.Ocean();
             this.game.addChild(this.ocean);
-            //add island to game
-            this.island = new objects.Island();
-            this.game.addChild(this.island);
             //add door to the game
-            this.door = new objects.Door();
+            this.door = new objects.Door(464, 0);
             this.game.addChild(this.door);
             //add scoreboard to the game
             this.scoreboard = new objects.ScoreBoard(this.game);
             //add plane to game
-            this.plane = new objects.Plane(this.game, this.scoreboard);
+            this.plane = new objects.Plane(464, 534, this.game, this.scoreboard);
             this.game.addChild(this.plane);
             //add barriers
             this.barriers[0] = new objects.Barrier(this.plane, 0, 0, 64, 640);
@@ -45,7 +41,7 @@ var states;
             this.barriers[2] = new objects.Barrier(this.plane, 896, 0, 64, 640);
             this.barriers[3] = new objects.Barrier(this.plane, 0, 576, 960, 64);
             for (var cloud = constants.CLOUD_NUM; cloud > 0; cloud--) {
-                this.clouds[cloud] = new objects.Slug(this.scoreboard);
+                this.clouds[cloud] = new objects.Slug(200, 300, this.scoreboard);
                 this.game.addChild(this.clouds[cloud]);
             }
             //set up the game for keyboard input
@@ -81,7 +77,6 @@ var states;
                 this.barriers[barrier].update();
             }
             this.plane.update();
-            this.island.update();
             if (this.scoreboard.lives > 0) {
                 for (var cloud = constants.CLOUD_NUM; cloud > 0; cloud--) {
                     this.clouds[cloud].update();
@@ -95,7 +90,6 @@ var states;
                         } //if ends
                     }
                 }
-                this.checkCollision(this.island, true, this.plane, false);
                 this.checkCollision(this.plane, false, this.door, true);
             } //if ends
             this.scoreboard.update();

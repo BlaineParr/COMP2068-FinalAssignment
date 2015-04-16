@@ -6,14 +6,10 @@
           private _lockedUnlocked: boolean ;
 
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++
-        constructor() {
-            super("closedDoor");
+        constructor(x: number, y: number) {
+            super("closedDoor", x, y);
             this.name = "closedDoor";
-            this.x = 100;
-            this.y = 100;
             this._lockedUnlocked = false;
-            
-          
         }
 
         // PRIVATE METHODS ++++++++++++++++++++++++++++++++++++++++

@@ -8,8 +8,8 @@
         private _scoreboard: objects.ScoreBoard;
 
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++
-        constructor(player: objects.Plane, scoreboard: objects.ScoreBoard) {
-            super("biklops");
+        constructor(x: number, y: number, player: objects.Plane, scoreboard: objects.ScoreBoard) {
+            super("biklops", x, y);
             this._player = player;
             this._scoreboard = scoreboard;
 

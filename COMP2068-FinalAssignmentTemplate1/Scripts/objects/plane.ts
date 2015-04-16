@@ -20,16 +20,13 @@
         public numberOfPongBalls: number;
 
         //Constructor/////////////////////////////////////////////////////////////////////////////
-        constructor(container: createjs.Container, scoreBoard: objects.ScoreBoard) {
-            super("robin");
+        constructor(x: number, y: number, container: createjs.Container, scoreBoard: objects.ScoreBoard) {
+            super("robin", x, y);
 
             this._container = container;
             this._scoreboard = scoreBoard;
 
             this._currentDirection = constants.DOWN;
-
-            this.x = 100
-            this.y = 430;
 
             this.numberOfPongBalls = 0;
 
@@ -45,7 +42,7 @@
             if (Date.now() > this._shotDelay) {
                 this._shotDelay = Date.now() + 250;
 
-                this.pongBalls[this.numberOfPongBalls] = new objects.PongBall(this._container, this.x, this.y, this._currentDirection, this);
+                this.pongBalls[this.numberOfPongBalls] = new objects.PongBall(this.x + (this.width / 2), this.y + (this.height / 2), this._container, this._currentDirection, this);
                 this._container.addChild(this.pongBalls[this.numberOfPongBalls]);
                 this.numberOfPongBalls++;
             } //if ends

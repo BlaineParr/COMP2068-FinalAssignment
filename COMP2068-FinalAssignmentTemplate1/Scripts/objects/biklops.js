@@ -9,8 +9,8 @@ var objects;
     var Biklops = (function (_super) {
         __extends(Biklops, _super);
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++
-        function Biklops(player, scoreboard) {
-            _super.call(this, "biklops");
+        function Biklops(x, y, player, scoreboard) {
+            _super.call(this, "biklops", x, y);
             this._player = player;
             this._scoreboard = scoreboard;
             this._reset();

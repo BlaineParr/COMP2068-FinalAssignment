@@ -7,7 +7,6 @@
 /// <reference path="constants.ts" />
 /// <reference path="objects/gameobject.ts" />
 /// <reference path="objects/plane.ts" />
-/// <reference path="objects/island.ts" />
 /// <reference path="objects/blindkoala.ts" />
 /// <reference path="objects/biklops.ts" />
 /// <reference path="objects/ocean.ts" />

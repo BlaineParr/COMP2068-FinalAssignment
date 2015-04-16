@@ -13,12 +13,13 @@
 /// <reference path="../objects/scoreboard.ts" />
 
 module states {
-    export class Play2 {
+    export class Play3 {
         //instance variables
         public game: createjs.Container;
         public plane: objects.Plane;
         public slugs: objects.Slug[] = [];
         public blindKoalas: objects.BlindKoala[] = [];
+        public biklopses: objects.Biklops[] = [];
         public ocean: objects.Ocean;
         public scoreboard: objects.ScoreBoard;
         public door: objects.Door;
@@ -39,7 +40,7 @@ module states {
             this.game.addChild(this.ocean);
 
             //add door to the game
-            this.door = new objects.Door(464, 0, constants.PLAY_STATE_3);
+            this.door = new objects.Door(464, 0, constants.PLAY_STATE);
             this.game.addChild(this.door);
 
             //add scoreboard to the game
@@ -67,16 +68,22 @@ module states {
                 this.game.addChild(this.blindKoalas[blindKoala]);
             } //for ends
 
+            //add biklops to game
+            for (var biklops = 2; biklops >= 0; biklops--) {
+                this.biklopses[biklops] = new objects.Biklops(Math.floor(Math.random() * 702) + 64, Math.floor(Math.random() * 384) + 64, this.game, this.plane, this.biklopses, this.scoreboard);
+                this.game.addChild(this.biklopses[biklops]);
+            } //for ends
+
             //set up the game for keyboard input
             //this section checks which key was pressed
             document.addEventListener("keydown", function (event) {
                 event.preventDefault(); //stops the page from scrolling down when space is pressed
-                play2.plane.actionStart(event.keyCode); //send the plane the key that was pressed
+                play3.plane.actionStart(event.keyCode); //send the plane the key that was pressed
             });
 
             //this section checks which key was released
             document.addEventListener("keyup", function (event) {
-                play2.plane.actionEnd(event.keyCode); //send the plane the key that was pressed
+                play3.plane.actionEnd(event.keyCode); //send the plane the key that was pressed
             });
 
             stage.addChild(this.game);
@@ -97,6 +104,7 @@ module states {
                 } //if ends
             } //if ends
         } //method checkCollision ends
+
         //Update Method
         public update(): void {
             this.ocean.update();
@@ -118,6 +126,11 @@ module states {
                     this.checkCollision(this.blindKoalas[blindKoala], false, this.plane, true);
                 } //for ends
 
+                for (var biklops = this.biklopses.length - 1; biklops >= 0; biklops--) {
+                    this.biklopses[biklops].update();
+                    this.checkCollision(this.biklopses[biklops], false, this.plane, true);
+                } //for ends
+
                 for (var pongBall = this.plane.numberOfPongBalls - 1; pongBall >= 0; pongBall--) {
                     this.plane.pongBalls[pongBall].update();
 
@@ -132,9 +145,15 @@ module states {
                             this.checkCollision(this.plane.pongBalls[pongBall], true, this.blindKoalas[blindKoala], true);
                         } //if ends
                     } //for ends
+
+                    for (var biklops = this.biklopses.length - 1; biklops >= 0; biklops--) {
+                        if (this.plane.pongBalls[pongBall] != null && this.biklopses[biklops] != null) {
+                            this.checkCollision(this.plane.pongBalls[pongBall], true, this.biklopses[biklops], true);
+                        } //if ends
+                    } //for ends
                 } //for ends
 
-                if (this.slugs.length == 0 && this.blindKoalas.length == 0) {
+                if (this.slugs.length == 0 && this.blindKoalas.length == 0 && this.biklopses.length == 0) {
                     this.door.unlocked = true;
                 } //if ends
 

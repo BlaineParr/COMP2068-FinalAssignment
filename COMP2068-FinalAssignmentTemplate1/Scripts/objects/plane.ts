@@ -120,7 +120,7 @@
             if (!this._invincible) {
                 this._scoreboard.lives--;
                 this._invincible = true;
-                this._invincibleTime = Date.now() + 3000;
+                this._invincibleTime = Date.now() + 1500;
             } //if ends
         } //method collide ends
     } //class Plane ends

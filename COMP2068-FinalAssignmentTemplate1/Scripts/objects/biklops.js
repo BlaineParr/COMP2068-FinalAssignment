@@ -9,27 +9,16 @@ var objects;
     var Biklops = (function (_super) {
         __extends(Biklops, _super);
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++
-        function Biklops(x, y, player, scoreboard) {
+        function Biklops(x, y, container, player, array, scoreboard) {
             _super.call(this, "biklops", x, y);
+            this._array = [];
             this._player = player;
+            this._array = array;
+            this._container = container;
             this._scoreboard = scoreboard;
-            this._reset();
+            this._health = 3;
         } //constructor ends
         // PRIVATE METHODS ++++++++++++++++++++++++++++++++++++++++
-        Biklops.prototype._reset = function () {
-            // set the island to start at a random x value
-            this.x = Math.floor(Math.random() * constants.SCREEN_WIDTH);
-            this.y = -this.height;
-            // add drift to the cloud 
-            this._dy = Math.floor(Math.random() * 5) + 5;
-            this._dx = Math.floor(Math.random() * 4) - 2;
-        }; //reset
-        /*
-        private _checkBounds(): void {
-            if (this.y > (constants.SCREEN_HEIGHT + this.height)) {
-                this._reset();
-            } //if ends
-        } //method _checkBounds ends*/
         Biklops.prototype._setDirection = function () {
             if (this._player.x > this.x) {
                 this._dx = 3;
@@ -51,7 +40,11 @@ var objects;
             this.x += this._dx;
         }; //method update ends
         Biklops.prototype.collide = function () {
-            this._scoreboard.score += 50;
+            this._health--;
+            if (this._health <= 0) {
+                this._array.splice(this._array.indexOf(this), 1);
+                this._container.removeChild(this);
+            } //if ends
         }; //method collide ends
         return Biklops;
     })(objects.GameObject);

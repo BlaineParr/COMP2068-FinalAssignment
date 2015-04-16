@@ -5,34 +5,23 @@
         private _dx: number;
         private _dy: number;
         private _player: objects.Plane;
+        private _health: number;
+        private _array: objects.Biklops[] = [];
+        private _container: createjs.Container;
         private _scoreboard: objects.ScoreBoard;
 
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++
-        constructor(x: number, y: number, player: objects.Plane, scoreboard: objects.ScoreBoard) {
+        constructor(x: number, y: number, container: createjs.Container, player: objects.Plane, array: objects.Biklops[], scoreboard: objects.ScoreBoard) {
             super("biklops", x, y);
             this._player = player;
+            this._array = array;
+            this._container = container;
             this._scoreboard = scoreboard;
 
-            this._reset();
+            this._health = 3;
         } //constructor ends
 
         // PRIVATE METHODS ++++++++++++++++++++++++++++++++++++++++
-        private _reset(): void {
-            // set the island to start at a random x value
-            this.x = Math.floor(Math.random() * constants.SCREEN_WIDTH);
-            this.y = -this.height;
-            // add drift to the cloud 
-            this._dy = Math.floor(Math.random() * 5) + 5;
-            this._dx = Math.floor(Math.random() * 4) - 2;
-        } //reset
-
-        /*
-        private _checkBounds(): void {
-            if (this.y > (constants.SCREEN_HEIGHT + this.height)) {
-                this._reset();
-            } //if ends
-        } //method _checkBounds ends*/
-
         private _setDirection(): void {
             if (this._player.x > this.x) {
                 this._dx = 3;
@@ -58,7 +47,12 @@
         } //method update ends
 
         public collide(): void {
-            this._scoreboard.score += 50;
+            this._health--;
+
+            if (this._health <= 0) {
+                this._array.splice(this._array.indexOf(this), 1);
+                this._container.removeChild(this);
+            } //if ends
         } //method collide ends
     } //class Biklops ends
 } //module objects ends

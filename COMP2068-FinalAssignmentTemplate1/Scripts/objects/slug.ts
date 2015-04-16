@@ -15,8 +15,8 @@
             this._array = array;
             this._scoreboard = scoreboard;
 
-            this._health = 2;
-            this._dx = 5;
+            this._health = 5;
+            this._dx = 3;
         } //constructor ends
 
         // PRIVATE METHODS ++++++++++++++++++++++++++++++++++++++++

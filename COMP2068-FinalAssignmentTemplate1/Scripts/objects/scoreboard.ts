@@ -6,7 +6,7 @@
         public score: number = 0;
         //private _game: createjs.Container;
 
-        // PRIVCATE ISNTANCE VARIABLES +++++++++++++++++++++++++++++++++++++++++++++++
+        // PRIVATE ISNTANCE VARIABLES +++++++++++++++++++++++++++++++++++++++++++++++
         _livesLabel: createjs.Text;
         _scoreLabel: createjs.Text;
 

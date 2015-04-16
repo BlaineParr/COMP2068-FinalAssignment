@@ -17,7 +17,7 @@ var states;
             // Add ocean to game
             this.ocean = new objects.Ocean();
             this.game.addChild(this.ocean);
-            var mailPilotLabel = new objects.Label("MAIL PILOT", constants.SCREEN_CENTER_WIDTH, 100);
+            var mailPilotLabel = new objects.Label("THE LEGEND OF ROBIN", constants.SCREEN_CENTER_WIDTH, 100);
             mailPilotLabel.font = "80px Consolas";
             mailPilotLabel.regX = mailPilotLabel.getMeasuredWidth() * 0.5;
             mailPilotLabel.regY = mailPilotLabel.getMeasuredHeight() * 0.5;

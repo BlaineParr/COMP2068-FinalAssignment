@@ -45,6 +45,10 @@ module states {
             //add scoreboard to the game
             this.scoreboard = new objects.ScoreBoard(this.game);
 
+            //get the lives and score from the global variables
+            this.scoreboard.lives = playerLives;
+            this.scoreboard.score = playerScore;
+
             //add plane to game
             this.plane = new objects.Plane(464, 534, this.game, this.scoreboard);
             this.game.addChild(this.plane);
@@ -136,6 +140,11 @@ module states {
 
                 if (this.slugs.length == 0 && this.blindKoalas.length == 0) {
                     this.door.unlocked = true;
+
+                    //put the current score and lives in the global variables since the level is
+                    //complete
+                    playerScore = this.scoreboard.score;
+                    playerLives = this.scoreboard.lives;
                 } //if ends
 
                 this.checkCollision(this.plane, false, this.door, true);

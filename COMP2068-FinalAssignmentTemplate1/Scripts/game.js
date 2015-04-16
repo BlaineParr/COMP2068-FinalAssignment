@@ -34,6 +34,9 @@ var highScore = 0;
 var currentState;
 var currentStateFunction;
 var stateChanged = false;
+//Gameplay Variables
+var playerScore;
+var playerLives;
 // Game Objects
 var gameOver;
 var play;

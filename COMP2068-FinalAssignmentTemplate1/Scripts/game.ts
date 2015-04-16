@@ -41,6 +41,9 @@ var currentState: number;
 var currentStateFunction: any;
 var stateChanged: boolean = false;
 
+//Gameplay Variables
+var playerScore: number;
+var playerLives: number;
 
 // Game Objects
 var gameOver: states.GameOver;

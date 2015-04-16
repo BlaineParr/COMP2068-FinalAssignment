@@ -62,7 +62,7 @@ var manifest = [
     { id: "playButton", src: "assets/images/playButton.png" },
     { id: "closedDoor", src: "assets/images/ClosedDoor.png" },
     { id: "openDoor", src: "assets/images/OpenDoor.png" },
-    { id: "engine", src: "assets/audio/engine.ogg" },
+    { id: "song", src: "assets/audio/song.ogg" },
     { id: "yay", src: "assets/audio/yay.ogg" },
     { id: "thunder", src: "assets/audio/thunder.ogg" }
 ];

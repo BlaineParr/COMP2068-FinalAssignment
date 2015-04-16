@@ -29,7 +29,6 @@ module states {
             //clear the stage
             stage.removeAllChildren();
             stage.removeAllEventListeners();
-            createjs.Sound.stop();
 
             //instantiate Game Container
             this.game = new createjs.Container();

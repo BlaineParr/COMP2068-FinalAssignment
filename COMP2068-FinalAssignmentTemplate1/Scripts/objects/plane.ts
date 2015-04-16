@@ -32,8 +32,6 @@
             this._shotDelay = 0;
 
             this._invincible = false;
-
-            //createjs.Sound.play("engine", { loop: -1 });
         } //constructor ends
 
         //Private Methods/////////////////////////////////////////////////////////////////////////

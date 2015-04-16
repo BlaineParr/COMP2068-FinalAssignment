@@ -12,7 +12,7 @@
     export var OCEAN_RESET_HEIGHT: number = 960;
 
     // Game Constants
-    export var PLAYER_LIVES: number = 100;
+    export var PLAYER_LIVES: number = 5;
     export var CLOUD_NUM: number = 3;
 
     // States Constants

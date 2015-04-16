@@ -12,6 +12,10 @@ var states;
     var GameOver = (function () {
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++++++++++++
         function GameOver() {
+            //clear the stage and stop all sounds
+            stage.clear();
+            stage.removeAllEventListeners();
+            createjs.Sound.stop();
             // Instantiate Game Container
             this.game = new createjs.Container();
             // Add ocean to game

@@ -33,6 +33,9 @@ module states {
             //instantiate Game Container
             this.game = new createjs.Container();
 
+            //play the song
+            createjs.Sound.play("song", { loop: -1 });
+
             //add ocean to game
             this.ocean = new objects.Ocean();
             this.game.addChild(this.ocean);

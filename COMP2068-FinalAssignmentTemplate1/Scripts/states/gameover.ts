@@ -18,6 +18,11 @@ module states {
 
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++++++++++++
         constructor() {
+            //clear the stage and stop all sounds
+            stage.clear();
+            stage.removeAllEventListeners();
+            createjs.Sound.stop();
+
             // Instantiate Game Container
             this.game = new createjs.Container();
 

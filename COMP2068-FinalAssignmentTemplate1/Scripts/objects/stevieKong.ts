@@ -27,8 +27,8 @@
         // PRIVATE METHODS ++++++++++++++++++++++++++++++++++++++++
         private _checkRange(): void {
             if ((this._player.x - this.x) <= 32 && (this._player.x - this.x) >= -32) {
-                //10% chance to fire
-                if (Math.floor(Math.random() * 100) + 1 <= 10) {
+                //25% chance to fire
+                if (Math.floor(Math.random() * 100) + 1 <= 25) {
                     if (Date.now() > this._shotDelay) {
                         this._shoot();
                         this._shotDelay = Date.now() + 1000;

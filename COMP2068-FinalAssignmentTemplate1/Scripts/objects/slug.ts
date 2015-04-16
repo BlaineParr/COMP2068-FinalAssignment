@@ -9,21 +9,17 @@
         private _scoreboard: objects.ScoreBoard;
 
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++
-        constructor(x: number, y: number, scoreboard: objects.ScoreBoard) {
+        constructor(x: number, y: number, container: createjs.Container, array: objects.Slug[], scoreboard: objects.ScoreBoard) {
             super("slug", x, y);
+            this._container = container;
+            this._array = array;
             this._scoreboard = scoreboard;
 
+            this._health = 2;
             this._dx = 5;
         } //constructor ends
 
         // PRIVATE METHODS ++++++++++++++++++++++++++++++++++++++++
-
-
-        private _setDirection(): void {
-            
-
-
-        } //method setDirection ends
 
         // PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++++
         public update(): void {
@@ -35,7 +31,12 @@
         } //method update ends
 
         public collide(): void {
-            this._scoreboard.score += 50;
+            this._health--;
+
+            if (this._health <= 0) {
+                this._array.splice(this._array.indexOf(this), 1);
+                this._container.removeChild(this);
+            } //if ends
         } //method collide ends
     } //class Biklops ends
 } //module objects ends 

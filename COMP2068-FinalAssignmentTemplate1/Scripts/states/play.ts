@@ -17,7 +17,7 @@ module states {
         //instance variables
         public game: createjs.Container;
         public plane: objects.Plane;
-        public clouds: objects.Slug[] = [];
+        public slugs: objects.Slug[] = [];
         public ocean: objects.Ocean;
         public scoreboard: objects.ScoreBoard;
         public door: objects.Door;
@@ -38,9 +38,8 @@ module states {
             this.game.addChild(this.ocean);
 
             //add door to the game
-            this.door = new objects.Door(464, 0);
+            this.door = new objects.Door(464, 0, constants.PLAY_STATE);
             this.game.addChild(this.door);
-
 
             //add scoreboard to the game
             this.scoreboard = new objects.ScoreBoard(this.game);
@@ -55,10 +54,10 @@ module states {
             this.barriers[2] = new objects.Barrier(this.plane, 896, 0, 64, 640);
             this.barriers[3] = new objects.Barrier(this.plane, 0, 576, 960, 64);
 
-            //add clouds to game
-            for (var cloud = constants.CLOUD_NUM; cloud > 0; cloud--) {
-                this.clouds[cloud] = new objects.Slug(200, 300, this.scoreboard);
-                this.game.addChild(this.clouds[cloud]);
+            //add slugss to game
+            for (var slug = 2; slug >= 0; slug--) {
+                this.slugs[slug] = new objects.Slug(200, 100 + (100 * slug), this.game, this.slugs, this.scoreboard);
+                this.game.addChild(this.slugs[slug]);
             } //for ends
 
             //set up the game for keyboard input
@@ -102,21 +101,25 @@ module states {
             this.plane.update();
 
             if (this.scoreboard.lives > 0) {
-                for (var cloud = constants.CLOUD_NUM; cloud > 0; cloud--) {
-                    this.clouds[cloud].update();
-                    this.checkCollision(this.clouds[cloud], false, this.plane, true);
+                for (var slug = this.slugs.length - 1; slug >= 0; slug--) {
+                    this.slugs[slug].update();
+                    this.checkCollision(this.slugs[slug], false, this.plane, true);
                 } //for ends
 
                 for (var pongBall = this.plane.numberOfPongBalls - 1; pongBall >= 0; pongBall--) {
                     this.plane.pongBalls[pongBall].update();
                    // this.checkCollision(this.clouds[cloud], true, this.plane.pongBalls[pongBall], true);
 
-                    for (var cloud = constants.CLOUD_NUM; cloud > 0; cloud--) {
+                    for (var slug = this.slugs.length - 1; slug >= 0; slug--) {
                         if (this.plane.pongBalls[pongBall] != null) {
-                            this.checkCollision(this.plane.pongBalls[pongBall], true, this.clouds[cloud], true);
+                            this.checkCollision(this.plane.pongBalls[pongBall], true, this.slugs[slug], true);
                         } //if ends
                     } //if ends
                 } //for ends
+
+                if (this.slugs.length == 0) {
+                    this.door.unlocked = true;
+                } //if ends
 
                 this.checkCollision(this.plane, false, this.door, true);
             } //if ends

@@ -79,11 +79,12 @@ function init() {
     stage.enableMouseOver(20); // Enable mouse events
     createjs.Ticker.setFPS(60); // 60 frames per second
     createjs.Ticker.addEventListener("tick", gameLoop);
-    setupStats();
+    //setupStats();
     currentState = constants.MENU_STATE;
     changeState(currentState);
 }
 // UTILITY METHODS +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+/*
 function setupStats() {
     stats.setMode(0);
     stats.domElement.style.position = 'absolute';
@@ -91,14 +92,15 @@ function setupStats() {
     stats.domElement.style.top = '440px';
     document.body.appendChild(stats.domElement);
 }
+*/
 function gameLoop() {
-    stats.begin(); // Begin metering
+    //stats.begin(); // Begin metering
     currentStateFunction.update();
     if (stateChanged) {
         changeState(currentState);
     }
     stage.update(); // Refreshes our stage
-    stats.end(); // End metering
+    //stats.end(); // End metering
 }
 // Our Game Kicks off in here
 function changeState(state) {

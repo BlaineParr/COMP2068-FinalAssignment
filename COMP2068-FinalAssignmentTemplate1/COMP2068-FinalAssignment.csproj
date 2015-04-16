@@ -133,6 +133,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\constants.ts" />
     <TypeScriptCompile Include="Scripts\game.ts" />
+    <TypeScriptCompile Include="Scripts\objects\barrier.ts" />
     <TypeScriptCompile Include="Scripts\objects\blindKoala.ts" />
     <TypeScriptCompile Include="Scripts\objects\button.ts" />
     <TypeScriptCompile Include="Scripts\objects\biklops.ts" />

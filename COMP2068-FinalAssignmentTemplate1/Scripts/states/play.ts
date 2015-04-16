@@ -8,6 +8,7 @@
 /// <reference path="../objects/door.ts" />
 /// <reference path="../objects/plane.ts" />
 /// <reference path="../objects/pongball.ts" />
+/// <reference path="../objects/barrier.ts" />
 /// <reference path="../objects/button.ts" />
 /// <reference path="../objects/label.ts" />
 /// <reference path="../objects/scoreboard.ts" />
@@ -22,9 +23,15 @@ module states {
         public ocean: objects.Ocean;
         public scoreboard: objects.ScoreBoard;
         public door: objects.Door;
+        public barriers: objects.Barrier[] = [];
 
         //Constructor/////////////////////////////////////////////////////////////////////////////
         constructor() {
+            //clear the stage
+            stage.removeAllChildren();
+            stage.removeAllEventListeners();
+            createjs.Sound.stop();
+
             //instantiate Game Container
             this.game = new createjs.Container();
 
@@ -49,6 +56,12 @@ module states {
             this.plane = new objects.Plane(this.game, this.scoreboard);
             this.game.addChild(this.plane);
 
+            //add barriers
+            this.barriers[0] = new objects.Barrier(this.plane, 0, 0, 64, 640);
+            this.barriers[1] = new objects.Barrier(this.plane, 0, 0, 960, 64);
+            this.barriers[2] = new objects.Barrier(this.plane, 896, 0, 64, 640);
+            this.barriers[3] = new objects.Barrier(this.plane, 0, 576, 960, 64);
+
             //add clouds to game
             for (var cloud = constants.CLOUD_NUM; cloud > 0; cloud--) {
                 this.clouds[cloud] = new objects.Slug(this.scoreboard);
@@ -72,49 +85,30 @@ module states {
 
 
         //Public Methods//////////////////////////////////////////////////////////////////////////
-
-        // Calculate the distance between two points
-        public distance(p1: createjs.Point, p2: createjs.Point): number {
-
-            return Math.floor(Math.sqrt(Math.pow((p2.x - p1.x), 2) + Math.pow((p2.y - p1.y), 2)));
-        } //method distance ends
-
-        // CHeck Collision Method
-        checkCollision(collider1: objects.GameObject, hit1: boolean, collider2: objects.GameObject, hit2: boolean) {
-            var p1: createjs.Point = new createjs.Point();
-            var p2: createjs.Point = new createjs.Point();
-            p1.x = collider1.x;
-            p1.y = collider1.y;
-            p2.x = collider2.x;
-            p2.y = collider2.y;
-
-            // Check for Collision
-            if (this.distance(p2, p1) < ((collider1.height * 0.5) + (collider2.height * 0.5))) {
-                if (!collider2.isColliding && !collider1.isColliding) { // Collision has occurred
-                    collider1.isColliding = true;
-                    collider2.isColliding = true;
-
-                    if (hit1) {
+        //Check collision
+        public checkCollision(collider1: objects.GameObject, getsHit1: boolean, collider2: objects.GameObject, getsHit2: boolean) {
+            if (collider1.hitBox().intersects(collider2.hitBox())) {
+                if (!collider1.isColliding && !collider2.isColliding) {
+                    if (getsHit1) {
                         collider1.collide();
                     } //if ends
-
-                    if (hit2) {
+                    if (getsHit2) {
                         collider2.collide();
                     } //if ends
                 } //if ends
             } //if ends
-            else {
-                collider1.isColliding = false;
-                collider2.isColliding = false;
-            } //else ends
         } //method checkCollision ends
-
         //Update Method
         public update(): void {
             this.ocean.update();
+
+            for (var barrier = 3; barrier >= 0; barrier--) {
+                this.barriers[barrier].update();
+            } //for ends
+
             this.plane.update();
             this.island.update();
-        
+
             if (this.scoreboard.lives > 0) {
                 for (var cloud = constants.CLOUD_NUM; cloud > 0; cloud--) {
                     this.clouds[cloud].update();

@@ -13,13 +13,16 @@ var objects;
             _super.call(this, assetLoader.getResult(assetString));
             this.width = this.getBounds().width;
             this.height = this.getBounds().height;
-            this.regX = this.width * 0.5;
-            this.regY = this.height * 0.5;
+            //this.regX = this.width * 0.5;
+            //this.regY = this.height * 0.5;
             this.isColliding = false;
         }
         //empty collide method that will be modified in the seperate objects 
         GameObject.prototype.collide = function () {
         };
+        GameObject.prototype.hitBox = function () {
+            return new createjs.Rectangle(this.x, this.y, this.width, this.height);
+        }; //method getBounds ends
         return GameObject;
     })(createjs.Bitmap);
     objects.GameObject = GameObject;

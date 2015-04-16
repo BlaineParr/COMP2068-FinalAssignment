@@ -11,8 +11,10 @@
         private _firing: boolean;
         private _currentDirection: number;
         private _shotDelay: number;
-        public width: number;
-        public height: number;
+        private _invincible: boolean;
+        private _invincibleTime: number;
+        public preX: number;
+        public preY: number;
         public name: string;
         public pongBalls: objects.PongBall[] = [];
         public numberOfPongBalls: number;
@@ -24,21 +26,16 @@
             this._container = container;
             this._scoreboard = scoreBoard;
 
-            this.name = "plane";
-
-            this.width = this.getBounds().width;
-            this.height = this.getBounds().height;
-
-            this.regX = this.width * 0.5;
-            this.regY = this.height * 0.5;
-
             this._currentDirection = constants.DOWN;
 
+            this.x = 100
             this.y = 430;
 
             this.numberOfPongBalls = 0;
 
             this._shotDelay = 0;
+
+            this._invincible = false;
 
             createjs.Sound.play("engine", { loop: -1 });
         } //constructor ends
@@ -56,6 +53,15 @@
 
         //Public Methods//////////////////////////////////////////////////////////////////////////
         public update(): void {
+            this.preX = this.x;
+            this.preY = this.y;
+
+            if (this._invincible) {
+                if (Date.now() > this._invincibleTime) {
+                    this._invincible = false;
+                } //if ends
+            } //if ends
+
             if (this._firing) {
                 this._shoot();
             } //if ends
@@ -114,7 +120,11 @@
         }//method actionStart ends
 
         public collide(): void {
-            this._scoreboard.lives--;
+            if (!this._invincible) {
+                this._scoreboard.lives--;
+                this._invincible = true;
+                this._invincibleTime = Date.now() + 3000;
+            } //if ends
         } //method collide ends
     } //class Plane ends
 } //module objects ends

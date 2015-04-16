@@ -14,6 +14,7 @@
 /// <reference path="objects/slug.ts" />
 /// <reference path="objects/door.ts" />
 /// <reference path="objects/pongball.ts" />
+/// <reference path="objects/barrier.ts" />
 /// <reference path="objects/label.ts" />
 /// <reference path="objects/button.ts" />
 /// <reference path="objects/scoreboard.ts" />

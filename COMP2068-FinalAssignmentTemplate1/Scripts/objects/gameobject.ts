@@ -13,14 +13,18 @@
             this.width = this.getBounds().width;
             this.height = this.getBounds().height;
 
-            this.regX = this.width * 0.5;
-            this.regY = this.height * 0.5;
+            //this.regX = this.width * 0.5;
+            //this.regY = this.height * 0.5;
 
             this.isColliding = false;
         }
         //empty collide method that will be modified in the seperate objects 
         public collide() {
         }
+
+        public hitBox(): createjs.Rectangle {
+            return new createjs.Rectangle(this.x, this.y, this.width, this.height);
+        } //method getBounds ends
 
     }
 

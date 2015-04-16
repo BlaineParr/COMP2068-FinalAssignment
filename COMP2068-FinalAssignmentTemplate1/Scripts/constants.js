@@ -18,7 +18,8 @@ var constants;
     constants.PLAY_STATE = 1;
     constants.PLAY_STATE_2 = 2;
     constants.PLAY_STATE_3 = 3;
-    constants.GAME_OVER_STATE = 4;
+    constants.PLAY_STATE_4 = 4;
+    constants.GAME_OVER_STATE = 5;
     //Direction Constants
     constants.UP = 0;
     constants.DOWN = 1;

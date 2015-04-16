@@ -20,7 +20,8 @@
     export var PLAY_STATE: number = 1;
     export var PLAY_STATE_2: number = 2;
     export var PLAY_STATE_3: number = 3;
-    export var GAME_OVER_STATE: number = 4;
+    export var PLAY_STATE_4: number = 4;
+    export var GAME_OVER_STATE: number = 5;
 
     //Direction Constants
     export var UP: number = 0;

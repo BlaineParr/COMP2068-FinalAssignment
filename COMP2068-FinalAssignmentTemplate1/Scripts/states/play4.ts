@@ -13,13 +13,11 @@
 /// <reference path="../objects/scoreboard.ts" />
 
 module states {
-    export class Play3 {
+    export class Play4 {
         //instance variables
         public game: createjs.Container;
         public plane: objects.Plane;
-        public slugs: objects.Slug[] = [];
-        public blindKoalas: objects.BlindKoala[] = [];
-        public biklopses: objects.Biklops[] = [];
+        public stevieKong: objects.StevieKong;
         public ocean: objects.Ocean;
         public scoreboard: objects.ScoreBoard;
         public door: objects.Door;
@@ -40,7 +38,7 @@ module states {
             this.game.addChild(this.ocean);
 
             //add door to the game
-            this.door = new objects.Door(464, 0, constants.PLAY_STATE_4);
+            this.door = new objects.Door(464, 0, constants.GAME_OVER_STATE);
             this.game.addChild(this.door);
 
             //add scoreboard to the game
@@ -60,34 +58,20 @@ module states {
             this.barriers[2] = new objects.Barrier(this.plane, 896, 0, 64, 640);
             this.barriers[3] = new objects.Barrier(this.plane, 0, 576, 960, 64);
 
-            //add slugs to game
-            for (var slug = 2; slug >= 0; slug--) {
-                this.slugs[slug] = new objects.Slug(Math.floor(Math.random() * 702) + 64, Math.floor(Math.random() * 384) + 64, this.game, this.slugs, this.scoreboard);
-                this.game.addChild(this.slugs[slug]);
-            } //for ends
-
-            //add blindKoalas to game
-            for (var blindKoala = 2; blindKoala >= 0; blindKoala--) {
-                this.blindKoalas[blindKoala] = new objects.BlindKoala(Math.floor(Math.random() * 702) + 64, Math.floor(Math.random() * 384) + 64, this.game, this.blindKoalas, this.scoreboard);
-                this.game.addChild(this.blindKoalas[blindKoala]);
-            } //for ends
-
-            //add biklops to game
-            for (var biklops = 2; biklops >= 0; biklops--) {
-                this.biklopses[biklops] = new objects.Biklops(Math.floor(Math.random() * 702) + 64, Math.floor(Math.random() * 384) + 64, this.game, this.plane, this.biklopses, this.scoreboard);
-                this.game.addChild(this.biklopses[biklops]);
-            } //for ends
+            //add stevieKong to the game
+            this.stevieKong = new objects.StevieKong(464, 64, this.game, this.plane, this.scoreboard);
+            this.game.addChild(this.stevieKong);
 
             //set up the game for keyboard input
             //this section checks which key was pressed
             document.addEventListener("keydown", function (event) {
                 event.preventDefault(); //stops the page from scrolling down when space is pressed
-                play3.plane.actionStart(event.keyCode); //send the plane the key that was pressed
+                play4.plane.actionStart(event.keyCode); //send the plane the key that was pressed
             });
 
             //this section checks which key was released
             document.addEventListener("keyup", function (event) {
-                play3.plane.actionEnd(event.keyCode); //send the plane the key that was pressed
+                play4.plane.actionEnd(event.keyCode); //send the plane the key that was pressed
             });
 
             stage.addChild(this.game);
@@ -108,7 +92,6 @@ module states {
                 } //if ends
             } //if ends
         } //method checkCollision ends
-
         //Update Method
         public update(): void {
             this.ocean.update();
@@ -120,51 +103,37 @@ module states {
             this.plane.update();
 
             if (this.scoreboard.lives > 0) {
-                for (var slug = this.slugs.length - 1; slug >= 0; slug--) {
-                    this.slugs[slug].update();
-                    this.checkCollision(this.slugs[slug], false, this.plane, true);
-                } //for ends
+                if (this.stevieKong != null) {
+                    this.stevieKong.update();
+                    this.checkCollision(this.stevieKong, false, this.plane, true);
 
-                for (var blindKoala = this.blindKoalas.length - 1; blindKoala >= 0; blindKoala--) {
-                    this.blindKoalas[blindKoala].update();
-                    this.checkCollision(this.blindKoalas[blindKoala], false, this.plane, true);
-                } //for ends
+                    for (var weight = this.stevieKong.numberOfWeights - 1; weight >= 0; weight--) {
+                        this.stevieKong.weights[weight].update();
 
-                for (var biklops = this.biklopses.length - 1; biklops >= 0; biklops--) {
-                    this.biklopses[biklops].update();
-                    this.checkCollision(this.biklopses[biklops], false, this.plane, true);
-                } //for ends
+                        if (this.stevieKong.weights[weight] != null && this.plane != null) {
+                            this.checkCollision(this.stevieKong.weights[weight], true, this.plane, true);
+                        } //if ends
+
+                        if (this.stevieKong.health <= 0) {
+                            this.stevieKong = null;
+                            this.door.unlocked = true;
+
+                            finalScore = this.scoreboard.score;
+
+                            if (finalScore > highScore) {
+                                highScore = finalScore;
+                            } //if ends
+                        } //if ends
+                    } //for ends
+                } //if ends
 
                 for (var pongBall = this.plane.numberOfPongBalls - 1; pongBall >= 0; pongBall--) {
                     this.plane.pongBalls[pongBall].update();
 
-                    for (var slug = this.slugs.length - 1; slug >= 0; slug--) {
-                        if (this.plane.pongBalls[pongBall] != null && this.slugs[slug] != null) {
-                            this.checkCollision(this.plane.pongBalls[pongBall], true, this.slugs[slug], true);
-                        } //if ends
-                    } //for ends
-
-                    for (var blindKoala = this.blindKoalas.length - 1; blindKoala >= 0; blindKoala--) {
-                        if (this.plane.pongBalls[pongBall] != null && this.blindKoalas[blindKoala] != null) {
-                            this.checkCollision(this.plane.pongBalls[pongBall], true, this.blindKoalas[blindKoala], true);
-                        } //if ends
-                    } //for ends
-
-                    for (var biklops = this.biklopses.length - 1; biklops >= 0; biklops--) {
-                        if (this.plane.pongBalls[pongBall] != null && this.biklopses[biklops] != null) {
-                            this.checkCollision(this.plane.pongBalls[pongBall], true, this.biklopses[biklops], true);
-                        } //if ends
-                    } //for ends
+                    if (this.plane.pongBalls[pongBall] != null && this.stevieKong != null) {
+                        this.checkCollision(this.plane.pongBalls[pongBall], true, this.stevieKong, true);
+                    } //if ends
                 } //for ends
-
-                if (this.slugs.length == 0 && this.blindKoalas.length == 0 && this.biklopses.length == 0) {
-                    this.door.unlocked = true;
-
-                    //put the current score and lives in the global variables since the level is
-                    //complete
-                    playerScore = this.scoreboard.score;
-                    playerLives = this.scoreboard.lives;
-                } //if ends
 
                 this.checkCollision(this.plane, false, this.door, true);
             } //if ends
@@ -185,4 +154,4 @@ module states {
             } //if ends
         } //method update ends
     } //class play ends
-} //module objects ends 
+} //module objects ends  

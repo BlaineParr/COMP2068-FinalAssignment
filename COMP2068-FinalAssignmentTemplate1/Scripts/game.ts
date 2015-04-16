@@ -15,6 +15,8 @@
 /// <reference path="objects/door.ts" />
 /// <reference path="objects/pongball.ts" />
 /// <reference path="objects/barrier.ts" />
+/// <reference path="objects/steviekong.ts" />
+/// <reference path="objects/weight.ts" />
 
 /// <reference path="objects/label.ts" />
 /// <reference path="objects/button.ts" />
@@ -24,6 +26,7 @@
 /// <reference path="states/play.ts" />
 /// <reference path="states/play2.ts" />
 /// <reference path="states/play3.ts" />
+/// <reference path="states/play4.ts" />
 /// <reference path="states/menu.ts" />
 
 // Game Variables
@@ -42,14 +45,15 @@ var currentStateFunction: any;
 var stateChanged: boolean = false;
 
 //Gameplay Variables
-var playerScore: number;
-var playerLives: number;
+var playerScore: number = 0;
+var playerLives: number = 5;
 
 // Game Objects
 var gameOver: states.GameOver;
 var play: states.Play;
 var play2: states.Play2;
 var play3: states.Play3;
+var play4: states.Play4;
 var menu: states.Menu;
 
 
@@ -59,6 +63,8 @@ var manifest = [
 //CHANGE BELOW
     { id: "blindKoala", src: "assets/images/blindKoala.png" },
     { id: "slug", src: "assets/images/slug.png" },
+    { id: "stevieKong", src: "assets/images/stevieKong.png" },
+    { id: "weight", src: "assets/images/weight.png"},
     //CHANGE ABOVE
     { id: "pongBall", src: "assets/images/pongBall.png" },
     { id: "island", src: "assets/images/island.png" },
@@ -151,6 +157,11 @@ function changeState(state: number) {
             // Instantiate Play State
             play3 = new states.Play3();
             currentStateFunction = play3;
+            break;
+        case constants.PLAY_STATE_4:
+            // Instantiate Play State
+            play4 = new states.Play4();
+            currentStateFunction = play4;
             break;
         case constants.GAME_OVER_STATE:
             // Instantiate Game Over State

@@ -15,7 +15,6 @@
         private _invincibleTime: number;
         public preX: number;
         public preY: number;
-        public name: string;
         public pongBalls: objects.PongBall[] = [];
         public numberOfPongBalls: number;
 

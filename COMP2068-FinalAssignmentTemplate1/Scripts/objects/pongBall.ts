@@ -40,6 +40,10 @@ module objects {
         public update(): void {
             this.x += this._dx;
             this.y += this._dy;
+
+            if (this.x < 0 || this.x > 960 || this.y < 0 || this.y > 640) {
+                this.collide();
+            } //if ends
         } //method update ends
 
         public collide() {

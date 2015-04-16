@@ -64,7 +64,7 @@
     <Content Include="assets\images\blindKoala.png" />
     <Content Include="assets\images\ClosedDoor.png" />
     <Content Include="assets\images\cloud.png" />
-    <Content Include="assets\images\dumbbells.png" />
+    <Content Include="assets\images\weight.png" />
     <Content Include="assets\images\gameTemplate.png" />
     <Content Include="assets\images\island.png" />
     <Content Include="assets\images\ocean.gif" />
@@ -84,17 +84,6 @@
     <Content Include="assets\audio\thunder.ogg" />
     <Content Include="assets\audio\yay.ogg" />
     <Content Include="assets\images\Thumbs.db" />
-    <Content Include="Scripts\constants.js.map" />
-    <Content Include="Scripts\game.js.map" />
-    <Content Include="Scripts\objects\button.js.map" />
-    <Content Include="Scripts\objects\gameobject.js.map" />
-    <Content Include="Scripts\objects\label.js.map" />
-    <Content Include="Scripts\objects\ocean.js.map" />
-    <Content Include="Scripts\objects\plane.js.map" />
-    <Content Include="Scripts\objects\scoreboard.js.map" />
-    <Content Include="Scripts\states\gameover.js.map" />
-    <Content Include="Scripts\states\menu.js.map" />
-    <Content Include="Scripts\states\play.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -103,22 +92,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Scripts\constants.js" />
-    <Content Include="Scripts\game.js" />
     <Content Include="Scripts\lib\easeljs-0.8.0.min.js" />
     <Content Include="Scripts\lib\preloadjs-0.6.0.min.js" />
     <Content Include="Scripts\lib\soundjs-0.6.0.min.js" />
     <Content Include="Scripts\lib\Stats.js" />
     <Content Include="Scripts\lib\tweenjs-0.6.0.min.js" />
-    <Content Include="Scripts\objects\button.js" />
-    <Content Include="Scripts\objects\gameobject.js" />
-    <Content Include="Scripts\objects\label.js" />
-    <Content Include="Scripts\objects\ocean.js" />
-    <Content Include="Scripts\objects\plane.js" />
-    <Content Include="Scripts\objects\scoreboard.js" />
-    <Content Include="Scripts\states\gameover.js" />
-    <Content Include="Scripts\states\menu.js" />
-    <Content Include="Scripts\states\play.js" />
     <None Include="Scripts\_references.js" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -143,11 +121,14 @@
     <TypeScriptCompile Include="Scripts\objects\pongBall.ts" />
     <TypeScriptCompile Include="Scripts\objects\scoreboard.ts" />
     <TypeScriptCompile Include="Scripts\objects\slug.ts" />
+    <TypeScriptCompile Include="Scripts\objects\stevieKong.ts" />
+    <TypeScriptCompile Include="Scripts\objects\weight.ts" />
     <TypeScriptCompile Include="Scripts\states\gameover.ts" />
     <TypeScriptCompile Include="Scripts\states\menu.ts" />
     <TypeScriptCompile Include="Scripts\states\play.ts" />
     <TypeScriptCompile Include="Scripts\states\play2.ts" />
     <TypeScriptCompile Include="Scripts\states\play3.ts" />
+    <TypeScriptCompile Include="Scripts\states\play4.ts" />
     <TypeScriptCompile Include="Scripts\typings\createjs-lib\createjs-lib.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\easeljs\easeljs.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\preloadjs\preloadjs.d.ts" />

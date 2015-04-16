@@ -14,6 +14,8 @@
 /// <reference path="objects/door.ts" />
 /// <reference path="objects/pongball.ts" />
 /// <reference path="objects/barrier.ts" />
+/// <reference path="objects/steviekong.ts" />
+/// <reference path="objects/weight.ts" />
 /// <reference path="objects/label.ts" />
 /// <reference path="objects/button.ts" />
 /// <reference path="objects/scoreboard.ts" />
@@ -21,6 +23,7 @@
 /// <reference path="states/play.ts" />
 /// <reference path="states/play2.ts" />
 /// <reference path="states/play3.ts" />
+/// <reference path="states/play4.ts" />
 /// <reference path="states/menu.ts" />
 // Game Variables
 var stats = new Stats();
@@ -35,19 +38,22 @@ var currentState;
 var currentStateFunction;
 var stateChanged = false;
 //Gameplay Variables
-var playerScore;
-var playerLives;
+var playerScore = 0;
+var playerLives = 5;
 // Game Objects
 var gameOver;
 var play;
 var play2;
 var play3;
+var play4;
 var menu;
 // asset manifest - array of asset objects
 var manifest = [
     { id: "biklops", src: "assets/images/biklops.png" },
     { id: "blindKoala", src: "assets/images/blindKoala.png" },
     { id: "slug", src: "assets/images/slug.png" },
+    { id: "stevieKong", src: "assets/images/stevieKong.png" },
+    { id: "weight", src: "assets/images/weight.png" },
     { id: "pongBall", src: "assets/images/pongBall.png" },
     { id: "island", src: "assets/images/island.png" },
     { id: "ocean", src: "assets/images/gameTemplate.png" },
@@ -117,6 +123,11 @@ function changeState(state) {
             // Instantiate Play State
             play3 = new states.Play3();
             currentStateFunction = play3;
+            break;
+        case constants.PLAY_STATE_4:
+            // Instantiate Play State
+            play4 = new states.Play4();
+            currentStateFunction = play4;
             break;
         case constants.GAME_OVER_STATE:
             // Instantiate Game Over State

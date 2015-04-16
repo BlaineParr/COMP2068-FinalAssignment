@@ -11,7 +11,7 @@ var constants;
     constants.SCREEN_CENTER_HEIGHT = constants.SCREEN_HEIGHT * 0.5;
     constants.OCEAN_RESET_HEIGHT = 960;
     // Game Constants
-    constants.PLAYER_LIVES = 5;
+    constants.PLAYER_LIVES = 100;
     constants.CLOUD_NUM = 3;
     // States Constants
     constants.MENU_STATE = 0;

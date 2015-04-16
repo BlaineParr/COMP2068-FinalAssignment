@@ -19,5 +19,9 @@
                 changeState(this._state);
             } //if ends
         } //method collide ends
+
+        changeImage() {
+            super.set("openDoor");
+        } //method changeImage ends
     } //class door ends
 } //module objects ends

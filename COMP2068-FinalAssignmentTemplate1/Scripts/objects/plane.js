@@ -18,7 +18,7 @@ var objects;
             this.numberOfPongBalls = 0;
             this._shotDelay = 0;
             this._invincible = false;
-            createjs.Sound.play("engine", { loop: -1 });
+            //createjs.Sound.play("engine", { loop: -1 });
         } //constructor ends
         //Private Methods/////////////////////////////////////////////////////////////////////////
         Plane.prototype._shoot = function () {
@@ -35,6 +35,7 @@ var objects;
             this.preY = this.y;
             if (this._invincible) {
                 if (Date.now() > this._invincibleTime) {
+                    this.alpha = 1;
                     this._invincible = false;
                 } //if ends
             } //if ends
@@ -94,6 +95,7 @@ var objects;
         }; //method actionStart ends
         Plane.prototype.collide = function () {
             if (!this._invincible) {
+                this.alpha = 0.5;
                 this._scoreboard.lives--;
                 this._invincible = true;
                 this._invincibleTime = Date.now() + 1500;

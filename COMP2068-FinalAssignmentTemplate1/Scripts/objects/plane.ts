@@ -54,6 +54,7 @@
 
             if (this._invincible) {
                 if (Date.now() > this._invincibleTime) {
+                    this.alpha = 1;
                     this._invincible = false;
                 } //if ends
             } //if ends
@@ -117,6 +118,7 @@
 
         public collide(): void {
             if (!this._invincible) {
+                this.alpha = 0.5;
                 this._scoreboard.lives--;
                 this._invincible = true;
                 this._invincibleTime = Date.now() + 1500;

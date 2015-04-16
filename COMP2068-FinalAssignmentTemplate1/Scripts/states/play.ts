@@ -119,7 +119,6 @@ module states {
 
                 if (this.slugs.length == 0) {
                     this.door.unlocked = true;
-
                     //put the current score and lives in the global variables since the level is
                     //complete
                     playerScore = this.scoreboard.score;

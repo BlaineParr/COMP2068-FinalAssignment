@@ -19,6 +19,7 @@
 /// <reference path="objects/scoreboard.ts" />
 /// <reference path="states/gameover.ts" />
 /// <reference path="states/play.ts" />
+/// <reference path="states/play2.ts" />
 /// <reference path="states/menu.ts" />
 // Game Variables
 var stats = new Stats();
@@ -35,6 +36,7 @@ var stateChanged = false;
 // Game Objects
 var gameOver;
 var play;
+var play2;
 var menu;
 // asset manifest - array of asset objects
 var manifest = [
@@ -100,6 +102,11 @@ function changeState(state) {
             // Instantiate Play State
             play = new states.Play();
             currentStateFunction = play;
+            break;
+        case constants.PLAY_STATE_2:
+            // Instantiate Play State
+            play2 = new states.Play2();
+            currentStateFunction = play2;
             break;
         case constants.GAME_OVER_STATE:
             // Instantiate Game Over State

@@ -28,7 +28,7 @@ var states;
             this.ocean = new objects.Ocean();
             this.game.addChild(this.ocean);
             //add door to the game
-            this.door = new objects.Door(464, 0, constants.PLAY_STATE);
+            this.door = new objects.Door(464, 0, constants.PLAY_STATE_2);
             this.game.addChild(this.door);
             //add scoreboard to the game
             this.scoreboard = new objects.ScoreBoard(this.game);
@@ -41,7 +41,7 @@ var states;
             this.barriers[2] = new objects.Barrier(this.plane, 896, 0, 64, 640);
             this.barriers[3] = new objects.Barrier(this.plane, 0, 576, 960, 64);
             for (var slug = 2; slug >= 0; slug--) {
-                this.slugs[slug] = new objects.Slug(200, 100 + (100 * slug), this.game, this.slugs, this.scoreboard);
+                this.slugs[slug] = new objects.Slug(Math.floor(Math.random() * 702) + 64, Math.floor(Math.random() * 384) + 64, this.game, this.slugs, this.scoreboard);
                 this.game.addChild(this.slugs[slug]);
             }
             //set up the game for keyboard input

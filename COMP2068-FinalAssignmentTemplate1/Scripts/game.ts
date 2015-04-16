@@ -22,10 +22,8 @@
 
 /// <reference path="states/gameover.ts" />
 /// <reference path="states/play.ts" />
+/// <reference path="states/play2.ts" />
 /// <reference path="states/menu.ts" />
-
-
-
 
 // Game Variables
 var stats: Stats = new Stats();
@@ -46,6 +44,7 @@ var stateChanged: boolean = false;
 // Game Objects
 var gameOver: states.GameOver;
 var play: states.Play;
+var play2: states.Play2;
 var menu: states.Menu;
 
 
@@ -137,6 +136,11 @@ function changeState(state: number) {
             // Instantiate Play State
             play = new states.Play();
             currentStateFunction = play;
+            break;
+        case constants.PLAY_STATE_2:
+            // Instantiate Play State
+            play2 = new states.Play2();
+            currentStateFunction = play2;
             break;
         case constants.GAME_OVER_STATE:
             // Instantiate Game Over State

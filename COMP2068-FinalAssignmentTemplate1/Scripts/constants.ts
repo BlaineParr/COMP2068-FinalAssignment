@@ -18,7 +18,9 @@
     // States Constants
     export var MENU_STATE: number = 0;
     export var PLAY_STATE: number = 1;
-    export var GAME_OVER_STATE: number = 2;
+    export var PLAY_STATE_2: number = 2;
+    export var PLAY_STATE_3: number = 3;
+    export var GAME_OVER_STATE: number = 4;
 
     //Direction Constants
     export var UP: number = 0;

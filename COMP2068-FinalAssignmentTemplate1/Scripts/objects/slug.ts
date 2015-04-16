@@ -4,7 +4,7 @@
         //instance variables
         private _dx: number;
         private _health: number;
-        private _array: objects.GameObject[] = [];
+        private _array: objects.Slug[] = [];
         private _container: createjs.Container;
         private _scoreboard: objects.ScoreBoard;
 
@@ -23,7 +23,7 @@
 
         // PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++++
         public update(): void {
-            if (this.x <= 64 || this.x >= 896 - (this.width / 2)) {
+            if (this.x <= 64 || this.x >= 896 - this.width) {
                 this._dx *= -1;
             } //if ends
 

@@ -16,7 +16,9 @@ var constants;
     // States Constants
     constants.MENU_STATE = 0;
     constants.PLAY_STATE = 1;
-    constants.GAME_OVER_STATE = 2;
+    constants.PLAY_STATE_2 = 2;
+    constants.PLAY_STATE_3 = 3;
+    constants.GAME_OVER_STATE = 4;
     //Direction Constants
     constants.UP = 0;
     constants.DOWN = 1;

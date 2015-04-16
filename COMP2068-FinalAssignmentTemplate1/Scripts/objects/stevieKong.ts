@@ -5,14 +5,14 @@
         private _dx: number;
         private _container: createjs.Container;
         private _scoreboard: objects.ScoreBoard;
-        private _player: objects.Plane
+        private _player: objects.Robin
         private _shotDelay: number;
         public health: number;
         public weights: objects.Weight[] = [];
         public numberOfWeights: number;
 
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++
-        constructor(x: number, y: number, container: createjs.Container, player: objects.Plane, scoreboard: objects.ScoreBoard) {
+        constructor(x: number, y: number, container: createjs.Container, player: objects.Robin, scoreboard: objects.ScoreBoard) {
             super("stevieKong", x, y);
             this._container = container;
             this._player = player;

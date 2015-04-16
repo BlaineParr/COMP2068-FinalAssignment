@@ -7,10 +7,10 @@ module objects {
         private _container: createjs.Container;
         private _dx: number;
         private _dy: number;
-        private _plane: objects.Plane;
+        private _plane: objects.Robin;
 
         //Constructor/////////////////////////////////////////////////////////////////////////////
-        constructor(x: number, y: number, container: createjs.Container, direction: number, plane: objects.Plane) {
+        constructor(x: number, y: number, container: createjs.Container, direction: number, plane: objects.Robin) {
             super("pongBall", x, y);
             this._container = container;
 

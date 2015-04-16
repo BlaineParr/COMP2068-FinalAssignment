@@ -5,7 +5,7 @@
 /// <reference path="../objects/blindkoala.ts" />
 /// <reference path="../objects/slug.ts" />
 /// <reference path="../objects/door.ts" />
-/// <reference path="../objects/plane.ts" />
+/// <reference path="../objects/robin.ts" />
 /// <reference path="../objects/pongball.ts" />
 /// <reference path="../objects/barrier.ts" />
 /// <reference path="../objects/button.ts" />
@@ -35,13 +35,13 @@ var states;
             //add scoreboard to the game
             this.scoreboard = new objects.ScoreBoard(this.game);
             //add plane to game
-            this.plane = new objects.Plane(464, 534, this.game, this.scoreboard);
-            this.game.addChild(this.plane);
+            this.robin = new objects.Robin(464, 534, this.game, this.scoreboard);
+            this.game.addChild(this.robin);
             //add barriers
-            this.barriers[0] = new objects.Barrier(this.plane, 0, 0, 64, 640);
-            this.barriers[1] = new objects.Barrier(this.plane, 0, 0, 960, 64);
-            this.barriers[2] = new objects.Barrier(this.plane, 896, 0, 64, 640);
-            this.barriers[3] = new objects.Barrier(this.plane, 0, 576, 960, 64);
+            this.barriers[0] = new objects.Barrier(this.robin, 0, 0, 64, 640);
+            this.barriers[1] = new objects.Barrier(this.robin, 0, 0, 960, 64);
+            this.barriers[2] = new objects.Barrier(this.robin, 896, 0, 64, 640);
+            this.barriers[3] = new objects.Barrier(this.robin, 0, 576, 960, 64);
             for (var slug = 2; slug >= 0; slug--) {
                 this.slugs[slug] = new objects.Slug(Math.floor(Math.random() * 702) + 64, Math.floor(Math.random() * 384) + 64, this.game, this.slugs, this.scoreboard);
                 this.game.addChild(this.slugs[slug]);
@@ -50,11 +50,11 @@ var states;
             //this section checks which key was pressed
             document.addEventListener("keydown", function (event) {
                 event.preventDefault(); //stops the page from scrolling down when space is pressed
-                play.plane.actionStart(event.keyCode); //send the plane the key that was pressed
+                play.robin.actionStart(event.keyCode); //send the plane the key that was pressed
             });
             //this section checks which key was released
             document.addEventListener("keyup", function (event) {
-                play.plane.actionEnd(event.keyCode); //send the plane the key that was pressed
+                play.robin.actionEnd(event.keyCode); //send the plane the key that was pressed
             });
             stage.addChild(this.game);
         } //constructor ends
@@ -78,17 +78,17 @@ var states;
             for (var barrier = 3; barrier >= 0; barrier--) {
                 this.barriers[barrier].update();
             }
-            this.plane.update();
+            this.robin.update();
             if (this.scoreboard.lives > 0) {
                 for (var slug = this.slugs.length - 1; slug >= 0; slug--) {
                     this.slugs[slug].update();
-                    this.checkCollision(this.slugs[slug], false, this.plane, true);
+                    this.checkCollision(this.slugs[slug], false, this.robin, true);
                 }
-                for (var pongBall = this.plane.numberOfPongBalls - 1; pongBall >= 0; pongBall--) {
-                    this.plane.pongBalls[pongBall].update();
+                for (var pongBall = this.robin.numberOfPongBalls - 1; pongBall >= 0; pongBall--) {
+                    this.robin.pongBalls[pongBall].update();
                     for (var slug = this.slugs.length - 1; slug >= 0; slug--) {
-                        if (this.plane.pongBalls[pongBall] != null) {
-                            this.checkCollision(this.plane.pongBalls[pongBall], true, this.slugs[slug], true);
+                        if (this.robin.pongBalls[pongBall] != null) {
+                            this.checkCollision(this.robin.pongBalls[pongBall], true, this.slugs[slug], true);
                         } //if ends
                     }
                 }
@@ -99,7 +99,7 @@ var states;
                     playerScore = this.scoreboard.score;
                     playerLives = this.scoreboard.lives;
                 } //if ends
-                this.checkCollision(this.plane, false, this.door, true);
+                this.checkCollision(this.robin, false, this.door, true);
             } //if ends
             this.scoreboard.update();
             if (this.scoreboard.lives < 1) {

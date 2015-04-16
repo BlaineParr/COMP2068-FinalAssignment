@@ -1,6 +1,6 @@
 ﻿module objects {
 
-    export class Plane extends objects.GameObject {
+    export class Robin extends objects.GameObject {
         //instance variables
         private _container: createjs.Container;
         private _scoreboard: objects.ScoreBoard;

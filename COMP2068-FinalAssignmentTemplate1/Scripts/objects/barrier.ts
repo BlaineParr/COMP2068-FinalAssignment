@@ -1,9 +1,9 @@
 ﻿module objects {
     export class Barrier extends createjs.Rectangle{
         //instance variables
-        private _player: objects.Plane;
+        private _player: objects.Robin;
 
-        constructor(player: objects.Plane, x: number, y: number, width: number, height: number) {
+        constructor(player: objects.Robin, x: number, y: number, width: number, height: number) {
             super(x, y, width, height);
 
             //set the player

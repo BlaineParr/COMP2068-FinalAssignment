@@ -4,14 +4,14 @@
         //instance variables
         private _dx: number;
         private _dy: number;
-        private _player: objects.Plane;
+        private _player: objects.Robin;
         private _health: number;
         private _array: objects.Biklops[] = [];
         private _container: createjs.Container;
         private _scoreboard: objects.ScoreBoard;
 
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++
-        constructor(x: number, y: number, container: createjs.Container, player: objects.Plane, array: objects.Biklops[], scoreboard: objects.ScoreBoard) {
+        constructor(x: number, y: number, container: createjs.Container, player: objects.Robin, array: objects.Biklops[], scoreboard: objects.ScoreBoard) {
             super("biklops", x, y);
             this._player = player;
             this._array = array;

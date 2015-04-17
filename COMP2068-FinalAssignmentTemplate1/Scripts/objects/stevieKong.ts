@@ -38,14 +38,14 @@
         } //method checkRange ends
 
         private _shoot(): void {
-            this.weights[this.numberOfWeights] = new objects.Weight(this.x + (this.width / 2), this.y + (this.height / 2), this._container, this);
+            this.weights[this.numberOfWeights] = new objects.Weight(this.x, this.y, this._container, this);
             this._container.addChild(this.weights[this.numberOfWeights]);
             this.numberOfWeights++;
         } //method shoot ends
 
         // PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++++
         public update(): void {
-            if (this.x <= 64 || this.x >= 896 - this.width) {
+            if (this.x <= 64 || this.x >= 896) {
                 this._dx *= -1;
             } //if ends
 

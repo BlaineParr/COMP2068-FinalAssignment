@@ -83,13 +83,11 @@ module states {
         //Check collision
         public checkCollision(collider1: objects.GameObject, getsHit1: boolean, collider2: objects.GameObject, getsHit2: boolean) {
             if (collider1.hitBox().intersects(collider2.hitBox())) {
-                if (!collider1.isColliding && !collider2.isColliding) {
-                    if (getsHit1) {
-                        collider1.collide();
-                    } //if ends
-                    if (getsHit2) {
-                        collider2.collide();
-                    } //if ends
+                if (getsHit1) {
+                    collider1.collide();
+                } //if ends
+                if (getsHit2) {
+                    collider2.collide();
                 } //if ends
             } //if ends
         } //method checkCollision ends

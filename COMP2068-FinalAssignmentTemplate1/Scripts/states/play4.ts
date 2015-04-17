@@ -81,13 +81,11 @@ module states {
         //Check collision
         public checkCollision(collider1: objects.GameObject, getsHit1: boolean, collider2: objects.GameObject, getsHit2: boolean) {
             if (collider1.hitBox().intersects(collider2.hitBox())) {
-                if (!collider1.isColliding && !collider2.isColliding) {
-                    if (getsHit1) {
-                        collider1.collide();
-                    } //if ends
-                    if (getsHit2) {
-                        collider2.collide();
-                    } //if ends
+                if (getsHit1) {
+                    collider1.collide();
+                } //if ends
+                if (getsHit2) {
+                    collider2.collide();
                 } //if ends
             } //if ends
         } //method checkCollision ends
@@ -103,30 +101,33 @@ module states {
             this.robin.update();
 
             if (this.scoreboard.lives > 0) {
+
                 if (this.stevieKong != null) {
-                    if (this.stevieKong.health > 0) {
-                        this.stevieKong.update();
+
+                    if (this.stevieKong.health <= 0) {
+                        this.stevieKong = null;
+                        this.door.unlocked = true;
+
+                        finalScore = this.scoreboard.score;
+
+                        if (finalScore > highScore) {
+                            highScore = finalScore;
+                        } //if ends
                     } //if ends
-                    this.checkCollision(this.stevieKong, false, this.robin, true);
 
-                    for (var weight = this.stevieKong.numberOfWeights - 1; weight >= 0; weight--) {
-                        this.stevieKong.weights[weight].update();
+                    if (this.stevieKong != null) {
+                        this.stevieKong.update();
 
-                        if (this.stevieKong.weights[weight] != null && this.robin != null) {
-                            this.checkCollision(this.stevieKong.weights[weight], true, this.robin, true);
-                        } //if ends
+                        this.checkCollision(this.stevieKong, false, this.robin, true);
 
-                        if (this.stevieKong.health <= 0) {
-                            this.stevieKong = null;
-                            this.door.unlocked = true;
+                        for (var weight = this.stevieKong.numberOfWeights - 1; weight >= 0; weight--) {
+                            this.stevieKong.weights[weight].update();
 
-                            finalScore = this.scoreboard.score;
-
-                            if (finalScore > highScore) {
-                                highScore = finalScore;
+                            if (this.stevieKong.weights[weight] != null && this.robin != null) {
+                                this.checkCollision(this.stevieKong.weights[weight], true, this.robin, true);
                             } //if ends
-                        } //if ends
-                    } //for ends
+                        } //for ends
+                    } //if ends
                 } //if ends
 
                 for (var pongBall = this.robin.numberOfPongBalls - 1; pongBall >= 0; pongBall--) {

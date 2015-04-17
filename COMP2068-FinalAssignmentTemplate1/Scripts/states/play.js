@@ -62,13 +62,11 @@ var states;
         //Check collision
         Play.prototype.checkCollision = function (collider1, getsHit1, collider2, getsHit2) {
             if (collider1.hitBox().intersects(collider2.hitBox())) {
-                if (!collider1.isColliding && !collider2.isColliding) {
-                    if (getsHit1) {
-                        collider1.collide();
-                    } //if ends
-                    if (getsHit2) {
-                        collider2.collide();
-                    } //if ends
+                if (getsHit1) {
+                    collider1.collide();
+                } //if ends
+                if (getsHit2) {
+                    collider2.collide();
                 } //if ends
             } //if ends
         }; //method checkCollision ends

@@ -39,7 +39,7 @@
             if (Date.now() > this._shotDelay) {
                 this._shotDelay = Date.now() + 250;
 
-                this.pongBalls[this.numberOfPongBalls] = new objects.PongBall(this.x + (this.width / 2), this.y + (this.height / 2), this._container, this._currentDirection, this);
+                this.pongBalls[this.numberOfPongBalls] = new objects.PongBall(this.x, this.y, this._container, this._currentDirection, this);
                 this._container.addChild(this.pongBalls[this.numberOfPongBalls]);
                 this.numberOfPongBalls++;
             } //if ends

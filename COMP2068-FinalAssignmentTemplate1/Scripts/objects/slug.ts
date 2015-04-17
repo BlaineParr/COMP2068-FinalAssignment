@@ -23,7 +23,7 @@
 
         // PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++++
         public update(): void {
-            if (this.x <= 64 || this.x >= 896 - this.width) {
+            if (this.x <= 64 || this.x >= 896) {
                 this._dx *= -1;
             } //if ends
 

@@ -43,7 +43,7 @@ var states;
             this.barriers[2] = new objects.Barrier(this.robin, 896, 0, 64, 640);
             this.barriers[3] = new objects.Barrier(this.robin, 0, 576, 960, 64);
             for (var slug = 2; slug >= 0; slug--) {
-                this.slugs[slug] = new objects.Slug(Math.floor(Math.random() * 702) + 64, Math.floor(Math.random() * 384) + 64, this.game, this.slugs, this.scoreboard);
+                this.slugs[slug] = new objects.Slug(Math.floor(Math.random() * 702) + 65, Math.floor(Math.random() * 384) + 65, this.game, this.slugs, this.scoreboard);
                 this.game.addChild(this.slugs[slug]);
             }
             //set up the game for keyboard input

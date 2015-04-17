@@ -31,7 +31,7 @@ var states;
         Menu.prototype.playButtonClicked = function () {
             this.game.removeAllChildren();
             stage.removeChild(this.game);
-            currentState = constants.PLAY_STATE_4;
+            currentState = constants.PLAY_STATE;
             stateChanged = true;
         };
         // UPDATE METHOD

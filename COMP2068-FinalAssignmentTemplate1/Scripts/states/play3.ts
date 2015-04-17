@@ -61,19 +61,19 @@ module states {
 
             //add slugs to game
             for (var slug = 2; slug >= 0; slug--) {
-                this.slugs[slug] = new objects.Slug(Math.floor(Math.random() * 702) + 64, Math.floor(Math.random() * 384) + 64, this.game, this.slugs, this.scoreboard);
+                this.slugs[slug] = new objects.Slug(Math.floor(Math.random() * 702) + 65, Math.floor(Math.random() * 384) + 65, this.game, this.slugs, this.scoreboard);
                 this.game.addChild(this.slugs[slug]);
             } //for ends
 
             //add blindKoalas to game
             for (var blindKoala = 2; blindKoala >= 0; blindKoala--) {
-                this.blindKoalas[blindKoala] = new objects.BlindKoala(Math.floor(Math.random() * 702) + 64, Math.floor(Math.random() * 384) + 64, this.game, this.blindKoalas, this.scoreboard);
+                this.blindKoalas[blindKoala] = new objects.BlindKoala(Math.floor(Math.random() * 702) + 65, Math.floor(Math.random() * 384) + 65, this.game, this.blindKoalas, this.scoreboard);
                 this.game.addChild(this.blindKoalas[blindKoala]);
             } //for ends
 
             //add biklops to game
             for (var biklops = 2; biklops >= 0; biklops--) {
-                this.biklopses[biklops] = new objects.Biklops(Math.floor(Math.random() * 702) + 64, Math.floor(Math.random() * 384) + 64, this.game, this.robin, this.biklopses, this.scoreboard);
+                this.biklopses[biklops] = new objects.Biklops(Math.floor(Math.random() * 702) + 65, Math.floor(Math.random() * 384) + 65, this.game, this.robin, this.biklopses, this.scoreboard);
                 this.game.addChild(this.biklopses[biklops]);
             } //for ends
 

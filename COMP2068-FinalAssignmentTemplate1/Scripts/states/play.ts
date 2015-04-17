@@ -59,7 +59,7 @@ module states {
 
             //add slugss to game
             for (var slug = 2; slug >= 0; slug--) {
-                this.slugs[slug] = new objects.Slug(Math.floor(Math.random() * 702) + 64, Math.floor(Math.random() * 384) + 64, this.game, this.slugs, this.scoreboard);
+                this.slugs[slug] = new objects.Slug(Math.floor(Math.random() * 702) + 65, Math.floor(Math.random() * 384) + 65, this.game, this.slugs, this.scoreboard);
                 this.game.addChild(this.slugs[slug]);
             } //for ends
 

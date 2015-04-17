@@ -91,6 +91,7 @@ module states {
                 } //if ends
             } //if ends
         } //method checkCollision ends
+
         //Update Method
         public update(): void {
             this.ocean.update();
@@ -103,7 +104,9 @@ module states {
 
             if (this.scoreboard.lives > 0) {
                 if (this.stevieKong != null) {
-                    this.stevieKong.update();
+                    if (this.stevieKong.health > 0) {
+                        this.stevieKong.update();
+                    } //if ends
                     this.checkCollision(this.stevieKong, false, this.robin, true);
 
                     for (var weight = this.stevieKong.numberOfWeights - 1; weight >= 0; weight--) {

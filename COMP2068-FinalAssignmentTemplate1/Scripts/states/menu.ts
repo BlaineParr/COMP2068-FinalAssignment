@@ -44,7 +44,7 @@ module states {
         playButtonClicked() {
             this.game.removeAllChildren();
             stage.removeChild(this.game);
-            currentState = constants.PLAY_STATE;
+            currentState = constants.PLAY_STATE_4;
             stateChanged = true;
         }
 

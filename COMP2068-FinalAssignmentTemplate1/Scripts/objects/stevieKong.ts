@@ -18,7 +18,7 @@
             this._player = player;
             this._scoreboard = scoreboard;
 
-            this.health = 50;
+            this.health = 1;
             this._dx = 7;
             this.numberOfWeights = 0;
             this._shotDelay = 0;
@@ -57,6 +57,11 @@
             this.health--;
 
             if (this.health <= 0) {
+                //remove all weights
+                for (var weight = this.numberOfWeights - 1; weight >= 0; weight--) {
+                    this.weights[weight].collide();
+                } //for ends
+
                 this._scoreboard.score += 1000;
                 this._container.removeChild(this);
             } //if ends

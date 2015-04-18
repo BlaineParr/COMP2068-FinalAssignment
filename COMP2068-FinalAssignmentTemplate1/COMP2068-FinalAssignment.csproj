@@ -74,11 +74,13 @@
     <Content Include="css\game.css" />
     <Content Include="index.html" />
     <Content Include="packages.config" />
-    <Content Include="assets\audio\engine.ogg" />
-    <Content Include="assets\audio\thunder.ogg" />
-    <Content Include="assets\audio\yay.ogg" />
     <Content Include="assets\images\Thumbs.db" />
+    <Content Include="assets\audio\doorOpen.ogg" />
+    <Content Include="assets\audio\pongFire.ogg" />
+    <Content Include="assets\audio\pongHit.ogg" />
+    <Content Include="assets\audio\robinHit.ogg" />
     <Content Include="assets\audio\song.ogg" />
+    <Content Include="assets\audio\weightFire.ogg" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

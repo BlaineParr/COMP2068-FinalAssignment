@@ -72,6 +72,9 @@ module objects {
          * than 1 the player receives 200 points and the biklops is removed from the game.
          */
         public collide(): void {
+            //play the pongHit sound
+            createjs.Sound.play("pongHit");
+
             this._health--; //subtract 1 health
 
             //if it has no health...

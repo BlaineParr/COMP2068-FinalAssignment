@@ -178,6 +178,9 @@
  * -Cleaned code.
  * -Removed unused assets.
  * -Internally documented everything.
+ *
+ * v1.0:
+ * -Added sound effects.
  */
 // Game Variables
 var stats = new Stats();
@@ -215,7 +218,12 @@ var manifest = [
     { id: "playButton", src: "assets/images/playButton.png" },
     { id: "closedDoor", src: "assets/images/closedDoor.png" },
     { id: "openDoor", src: "assets/images/openDoor.png" },
-    { id: "song", src: "assets/audio/song.ogg" }
+    { id: "song", src: "assets/audio/song.ogg" },
+    { id: "doorOpen", src: "assets/audio/doorOpen.ogg" },
+    { id: "pongFire", src: "assets/audio/pongFire.ogg" },
+    { id: "pongHit", src: "assets/audio/pongHit.ogg" },
+    { id: "robinHit", src: "assets/audio/robinHit.ogg" },
+    { id: "weightFire", src: "assets/audio/weightFire.ogg" }
 ];
 /*
  * This function loads all of the assets before the game is shown.

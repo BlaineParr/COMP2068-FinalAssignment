@@ -1,19 +1,21 @@
+/*
+ * This module contains constants to be used in various places in the game
+ */
 var constants;
 (function (constants) {
     // Font Constants
     constants.FONT_SIZE = "40px";
-    constants.FONT_FAMILY = "Consolas";
-    constants.FONT_COLOUR = "#FFFF00";
-    // Stage Constants
+    constants.FONT_FAMILY = "Arial";
+    constants.FONT_COLOUR = "#FFFFFF";
+    //Stage Constants
     constants.SCREEN_WIDTH = 960;
     constants.SCREEN_HEIGHT = 640;
     constants.SCREEN_CENTER_WIDTH = constants.SCREEN_WIDTH * 0.5;
     constants.SCREEN_CENTER_HEIGHT = constants.SCREEN_HEIGHT * 0.5;
     constants.OCEAN_RESET_HEIGHT = 960;
-    // Game Constants
+    //Game Constants
     constants.PLAYER_LIVES = 5;
-    constants.CLOUD_NUM = 3;
-    // States Constants
+    //States Constants
     constants.MENU_STATE = 0;
     constants.PLAY_STATE = 1;
     constants.PLAY_STATE_2 = 2;

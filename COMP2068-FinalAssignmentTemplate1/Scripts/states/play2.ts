@@ -1,17 +1,6 @@
-﻿/// <reference path="../constants.ts" />
-/// <reference path="../objects/gameobject.ts" />
-/// <reference path="../objects/biklops.ts" />
-/// <reference path="../objects/ocean.ts" />
-/// <reference path="../objects/blindkoala.ts" />
-/// <reference path="../objects/slug.ts" />
-/// <reference path="../objects/door.ts" />
-/// <reference path="../objects/robin.ts" />
-/// <reference path="../objects/pongball.ts" />
-/// <reference path="../objects/barrier.ts" />
-/// <reference path="../objects/button.ts" />
-/// <reference path="../objects/label.ts" />
-/// <reference path="../objects/scoreboard.ts" />
-
+﻿/*
+ * This class is the second level of the game.
+ */
 module states {
     export class Play2 {
         //instance variables
@@ -19,7 +8,7 @@ module states {
         public robin: objects.Robin;
         public slugs: objects.Slug[] = [];
         public blindKoalas: objects.BlindKoala[] = [];
-        public ocean: objects.Ocean;
+        public background: objects.Background;
         public scoreboard: objects.ScoreBoard;
         public door: objects.Door;
         public barriers: objects.Barrier[] = [];
@@ -34,8 +23,8 @@ module states {
             this.game = new createjs.Container();
 
             //add ocean to game
-            this.ocean = new objects.Ocean();
-            this.game.addChild(this.ocean);
+            this.background = new objects.Background();
+            this.game.addChild(this.background);
 
             //add door to the game
             this.door = new objects.Door(464, 0, constants.PLAY_STATE_3);
@@ -48,7 +37,7 @@ module states {
             this.scoreboard.lives = playerLives;
             this.scoreboard.score = playerScore;
 
-            //add plane to game
+            //add robin to game
             this.robin = new objects.Robin(464, 534, this.game, this.scoreboard);
             this.game.addChild(this.robin);
 
@@ -82,60 +71,86 @@ module states {
                 play2.robin.actionEnd(event.keyCode); //send the plane the key that was pressed
             });
 
+            //add the game to the stage
             stage.addChild(this.game);
         } //constructor ends
 
 
         //Public Methods//////////////////////////////////////////////////////////////////////////
-        //Check collision
+        /*
+         * This method checks if two objects are colliding with each other
+         */
         public checkCollision(collider1: objects.GameObject, getsHit1: boolean, collider2: objects.GameObject, getsHit2: boolean) {
+            //if the rectangles of the two objects intersect...
             if (collider1.hitBox().intersects(collider2.hitBox())) {
+                //if getsHit1 is true
                 if (getsHit1) {
-                    collider1.collide();
+                    collider1.collide(); //call collide
                 } //if ends
+
+                //if getsHit2 is true
                 if (getsHit2) {
-                    collider2.collide();
+                    collider2.collide(); //call collide
                 } //if ends
             } //if ends
         } //method checkCollision ends
-        //Update Method
-        public update(): void {
-            this.ocean.update();
 
+
+        /*
+         * This method updates the game.
+         */
+        public update(): void {
+            //call each barrier's update
             for (var barrier = 3; barrier >= 0; barrier--) {
                 this.barriers[barrier].update();
             } //for ends
 
+            //update the player
             this.robin.update();
 
+            //if alive...
             if (this.scoreboard.lives > 0) {
+                //update each slug
                 for (var slug = this.slugs.length - 1; slug >= 0; slug--) {
                     this.slugs[slug].update();
+
+                    //check if the slug collides with the player
                     this.checkCollision(this.slugs[slug], false, this.robin, true);
                 } //for ends
 
+                //update each blindKoala
                 for (var blindKoala = this.blindKoalas.length - 1; blindKoala >= 0; blindKoala--) {
                     this.blindKoalas[blindKoala].update();
+
+                    //check if the blindKoala collides with the player
                     this.checkCollision(this.blindKoalas[blindKoala], false, this.robin, true);
                 } //for ends
 
+                //update each pongBall
                 for (var pongBall = this.robin.numberOfPongBalls - 1; pongBall >= 0; pongBall--) {
                     this.robin.pongBalls[pongBall].update();
 
+                    //check each slug to see if collides with the pongBall
                     for (var slug = this.slugs.length - 1; slug >= 0; slug--) {
+                        //if neither the pongBall nor the slug is null
                         if (this.robin.pongBalls[pongBall] != null && this.slugs[slug] != null) {
+                            //check if they collide
                             this.checkCollision(this.robin.pongBalls[pongBall], true, this.slugs[slug], true);
                         } //if ends
                     } //for ends
 
+                    //check each blindKoala to see if collides with the pongBall
                     for (var blindKoala = this.blindKoalas.length - 1; blindKoala >= 0; blindKoala--) {
+                        //if neither the pongBall nor the blindKoala is null
                         if (this.robin.pongBalls[pongBall] != null && this.blindKoalas[blindKoala] != null) {
                             this.checkCollision(this.robin.pongBalls[pongBall], true, this.blindKoalas[blindKoala], true);
                         } //if ends
                     } //for ends
                 } //for ends
 
+                //if there are no slugs and blindKoalas
                 if (this.slugs.length == 0 && this.blindKoalas.length == 0) {
+                    //unlock the door
                     this.door.unlocked = true;
 
                     //put the current score and lives in the global variables since the level is
@@ -144,20 +159,34 @@ module states {
                     playerLives = this.scoreboard.lives;
                 } //if ends
 
+                //check is the player collides with the door
                 this.checkCollision(this.robin, false, this.door, true);
             } //if ends
 
+            //update the scoreboard
             this.scoreboard.update();
 
+            //if the player runs out of lives
             if (this.scoreboard.lives < 1) {
+                //stop sounds
                 createjs.Sound.stop();
+
+                //clear the game
                 this.game.removeAllChildren();
+
+                //clear the stage
                 stage.removeAllChildren();
+
+                //set the finalScore
                 finalScore = this.scoreboard.score;
 
+                //if the finalScore is higher than the highScore set the highScore to the 
+                //finalScore
                 if (finalScore > highScore) {
                     highScore = finalScore;
                 } //if ends
+
+                //change to the gameover state
                 currentState = constants.GAME_OVER_STATE;
                 stateChanged = true;
             } //if ends

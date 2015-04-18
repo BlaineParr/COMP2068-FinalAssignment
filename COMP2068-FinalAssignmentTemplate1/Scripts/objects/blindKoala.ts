@@ -29,7 +29,7 @@ module objects {
             this._dy = 5;
         } //constructor ends
 
-        // PUBLIC METHODS ++++++++++++++++++++++++++++++++++++++++++
+        //Public Methods//////////////////////////////////////////////////////////////////////////
         public update(): void {
             //if the blindKoala hits the top or bottom of the playable area...
             if (this.y <= 64 || this.y >= 576) {

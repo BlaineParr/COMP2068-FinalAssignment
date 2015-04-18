@@ -11,7 +11,7 @@ var objects;
 (function (objects) {
     var GameObject = (function (_super) {
         __extends(GameObject, _super);
-        // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++
+        //Constructor/////////////////////////////////////////////////////////////////////////////
         function GameObject(assetString, x, y) {
             //load the image
             _super.call(this, assetLoader.getResult(assetString));
@@ -21,7 +21,7 @@ var objects;
             //set the regX and regY to the center of the object
             this.regX = this.width * 0.5;
             this.regY = this.height * 0.5;
-            //set the postion with the width and height divided by 2 so we can specify by top left
+            //set the postion plus the width and height divided by 2 so we can specify by top left
             this.x = x + (this.width / 2);
             this.y = y + (this.height / 2);
         } //constructor ends
@@ -41,6 +41,6 @@ var objects;
         }; //method getBounds ends
         return GameObject;
     })(createjs.Bitmap);
-    objects.GameObject = GameObject;
-})(objects || (objects = {}));
+    objects.GameObject = GameObject; //class GameObject ends
+})(objects || (objects = {})); //module objects ends
 //# sourceMappingURL=gameobject.js.map

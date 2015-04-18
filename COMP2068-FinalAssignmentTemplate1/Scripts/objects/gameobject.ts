@@ -7,7 +7,7 @@ module objects {
         public width: number;
         public height: number
 
-        // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++++++
+        //Constructor/////////////////////////////////////////////////////////////////////////////
         constructor(assetString: string, x: number, y: number) {
             //load the image
             super(assetLoader.getResult(assetString));
@@ -20,7 +20,7 @@ module objects {
             this.regX = this.width * 0.5;
             this.regY = this.height * 0.5;
 
-            //set the postion with the width and height divided by 2 so we can specify by top left
+            //set the postion plus the width and height divided by 2 so we can specify by top left
             this.x = x + (this.width / 2);
             this.y = y + (this.height / 2);
         } //constructor ends
@@ -40,5 +40,5 @@ module objects {
             //create a rectangle at the x, y width and height of the object
             return new createjs.Rectangle(this.x - (this.width / 2), this.y - (this.height / 2), this.width, this.height);
         } //method getBounds ends
-    }
-}   
+    } //class GameObject ends
+} //module objects ends

@@ -24,6 +24,7 @@ module constants {
     export var PLAY_STATE_3: number = 3;
     export var PLAY_STATE_4: number = 4;
     export var GAME_OVER_STATE: number = 5;
+    export var INSTRUCTIONS_STATE: number = 6;
 
     //Direction Constants
     export var UP: number = 0;

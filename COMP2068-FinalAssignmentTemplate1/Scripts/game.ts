@@ -185,6 +185,9 @@
  * 
  * v1.0:
  * -Added sound effects.
+ * 
+ * v1.1:
+ * -Finished the game.
  */
 
 // Game Variables
@@ -213,7 +216,7 @@ var play2: states.Play2;
 var play3: states.Play3;
 var play4: states.Play4;
 var menu: states.Menu;
-
+var instructions: states.Instuctions;
 
 // asset manifest - array of asset objects
 var manifest = [
@@ -227,6 +230,7 @@ var manifest = [
     { id: "robin", src: "assets/images/robin.png" },
     { id: "tryAgainButton", src: "assets/images/tryAgainButton.png" },
     { id: "playButton", src: "assets/images/playButton.png" },
+    { id: "instructionsButton", src: "assets/images/instructionsButton.png" },
     { id: "closedDoor", src: "assets/images/closedDoor.png" },
     { id: "openDoor", src: "assets/images/openDoor.png" },
     { id: "song", src: "assets/audio/song.ogg" },
@@ -308,6 +312,11 @@ function changeState(state: number) {
             // Instantiate Game Over State
             gameOver = new states.GameOver();
             currentStateFunction = gameOver;
+            break;
+        case constants.INSTRUCTIONS_STATE:
+            // Instantiate Game Over State
+            instructions = new states.Instuctions();
+            currentStateFunction = instructions;
             break;
     } //switch ends
 } //function changeState ends

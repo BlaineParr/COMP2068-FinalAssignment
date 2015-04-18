@@ -22,6 +22,7 @@ var constants;
     constants.PLAY_STATE_3 = 3;
     constants.PLAY_STATE_4 = 4;
     constants.GAME_OVER_STATE = 5;
+    constants.INSTRUCTIONS_STATE = 6;
     //Direction Constants
     constants.UP = 0;
     constants.DOWN = 1;

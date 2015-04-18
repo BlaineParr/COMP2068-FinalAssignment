@@ -62,6 +62,8 @@
     <Content Include="assets\images\biklops.png" />
     <Content Include="assets\images\blindKoala.png" />
     <Content Include="assets\images\closedDoor.png" />
+    <Content Include="assets\images\instructions.png" />
+    <Content Include="assets\images\instructionsButton.png" />
     <Content Include="assets\images\weight.png" />
     <Content Include="assets\images\stevieKong.png" />
     <Content Include="assets\images\background.png" />
@@ -121,6 +123,7 @@
     <TypeScriptCompile Include="Scripts\objects\stevieKong.ts" />
     <TypeScriptCompile Include="Scripts\objects\weight.ts" />
     <TypeScriptCompile Include="Scripts\states\gameover.ts" />
+    <TypeScriptCompile Include="Scripts\states\instructions.ts" />
     <TypeScriptCompile Include="Scripts\states\menu.ts" />
     <TypeScriptCompile Include="Scripts\states\play.ts" />
     <TypeScriptCompile Include="Scripts\states\play2.ts" />
